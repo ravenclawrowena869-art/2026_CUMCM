@@ -2,30 +2,33 @@
 
 Status: `ORIGINAL_AUTHORITY_RESTORED / MATHEMATICAL_SOURCE`
 
-This directory restores the original XXT Q2 Formal Optimization Spec R1 delivery required by `Q2_AUTHORITY_SUPPLEMENT_REQUEST_XXT_FYQ_R0.md`.
+This directory restores the directly readable XXT Q2 Formal Optimization Spec R1 authority required by `Q2_AUTHORITY_SUPPLEMENT_REQUEST_XXT_FYQ_R0.md`.
 
-## Primary package
+## Original package provenance
 
-- File: `CUMCM2026_C_XXT_Q2_FORMAL_OPT_SPEC_R1_DELIVERY.zip`
-- Outer SHA256: `0d17f99f58ef469369c0958ee4795bb3e71553289c60b8bf6c3d225f52e7e561`
-- ZIP CRC: `PASS`
-- Top-level internal `SHA256SUMS.txt`: `23/23 PASS`
+- Original file: `CUMCM2026_C_XXT_Q2_FORMAL_OPT_SPEC_R1_DELIVERY.zip`
+- Original outer SHA256: `0d17f99f58ef469369c0958ee4795bb3e71553289c60b8bf6c3d225f52e7e561`
+- Original ZIP CRC: `PASS`
+- Original top-level internal `SHA256SUMS.txt`: `23/23 PASS`
 - Stable contract ID: `CUMCM2026_C_Q2_MATH_CONTRACT_R1`
-- Authority relation: original R1 mathematical delivery; not reconstructed and not superseded by this archival upload.
+- Authority relation: original R1 mathematical delivery; not reconstructed and not superseded.
+
+The exact original ZIP was recovered from the project Library and reverified against the historical SHA256 above. The current GitHub connector does not expose a direct local-file upload action suitable for preserving that larger binary byte-for-byte. Therefore this branch commits the exact core readable MD/JSON payloads plus a compact repository mirror ZIP. This is a transport limitation only and does not modify the mathematical authority.
+
+## Repository mirror bundle
+
+- File: `CUMCM2026_C_Q2_XXT_AUTHORITY_REPO_MIRROR_R1.zip`
+- SHA256: `0e617c0972a20c56235895cadadb7f40d441b17dfb13a408267e490521695fce`
+- ZIP CRC: `PASS`
+- Contains the core formal spec, validator, implementation handoff, contract manifest, provenance and mirror checksum manifest.
+- Authority relation: does **not** supersede or reinterpret the original XXT delivery; the historical outer hash above remains the original package identity.
 
 ## Direct-readable authority/interface files
 
-The key MD/JSON files from the ZIP are also stored next to the ZIP so other GPT/Codex windows can read them directly from GitHub. The complete byte-identical package remains the ZIP above.
-
-Key files include:
 - `XXT_Q2_FORMAL_OPT_SPEC_R1.md`
 - `XXT_Q2_IMPLEMENTATION_HANDOFF_R1.md`
 - `XXT_Q2_MATH_CONTRACT_MANIFEST_R1.json`
 - `XXT_Q2_VALIDATOR_SPEC_R1.md`
-- `SHA256SUMS.txt`
+- `SHA256SUMS.txt` (original package checksum manifest)
 
-## Integrity note
-
-The ZIP was re-materialized from the project Library and rechecked in the current FYQ window. Outer SHA256 matches the historical authority hash exactly; ZIP CRC passes; the top-level manifest verifies all 23 listed payload hashes.
-
-No mathematical content is modified by this upload. Mathematical ownership/review remains with XXT.
+No mathematical content is modified by this archival upload. Mathematical ownership/review remains with XXT.
