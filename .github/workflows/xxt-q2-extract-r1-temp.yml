@@ -1,0 +1,30 @@
+name: xxt-q2-extract-r1-temp
+on:
+  push:
+    branches:
+      - xxt/q2-temp-extract-r1
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify and print exact R1 authority files
+        shell: bash
+        run: |
+          set -euo pipefail
+          ZIP='支撑材料/03_中间结果/Q2/XXT_AUTHORITY/CUMCM2026_C_XXT_Q2_FORMAL_OPT_SPEC_R1_DELIVERY.zip'
+          echo '===OUTER_SHA256==='
+          sha256sum "$ZIP"
+          echo '===ZIP_TEST==='
+          unzip -t "$ZIP" | tail -n 2
+          TMP="$(mktemp -d)"
+          unzip -q "$ZIP" -d "$TMP"
+          ROOT="$TMP/Q2_FORMAL_SPEC_R1_DELIVERY"
+          for F in XXT_Q2_RISK_PARAMETER_PROTOCOL_R1.md XXT_Q2_MODEL_FAMILY_CAUSALITY_ADJUDICATION_R1.md; do
+            echo "===FILE_SHA256:$F==="
+            sha256sum "$ROOT/$F"
+            echo "===FILE_BASE64_BEGIN:$F==="
+            base64 -w0 "$ROOT/$F"
+            echo
+            echo "===FILE_BASE64_END:$F==="
+          done
