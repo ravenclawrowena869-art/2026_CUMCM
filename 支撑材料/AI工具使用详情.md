@@ -1,6 +1,10 @@
 # AI 工具使用详情（赛中持续记录稿）
 
 > 本文件仅用于竞赛期间持续记录，不是最终提交件。每完成一个实际使用 AI 的阶段，应及时追加真实记录，不得为了“补齐”材料而事后编造。最终提交前，经全队人工核验后，将本文件整理并转换为 **`AI 工具使用详情.pdf`**，随后删除本 Markdown 文件。
+>
+> **原始互动证据**：本文件现在作为阶段摘要索引使用。比赛期间与 AI 的关键 Prompt、AI 回复原文、执行窗口原话和人工后续，优先追加到同目录的 **`AI互动原始记录.md`**。最终整理 AI 使用详情时，应先回溯原始互动记录，再补充人工核验、采纳状态和正式 artifact，避免只依赖赛后概括。
+>
+> **当前记录顺序**：原始互动记录优先，阶段摘要随后整理。对于尚未完成的 AI 任务，只记录真实互动、当前状态和待核验项，不把正在运行的结果提前写成最终结论。
 
 ## 一、记录要求
 
@@ -20,6 +24,10 @@
 |---|---|---|---|
 | WPS AI | WPS AI | 数据可视化分析 | 变化趋势图绘制 |
 | ChatGPT | GPT-5.6 Sol | 赛题理解、数据检查、提交材料结构与合规核查 | 赛中持续更新 |
+| ChatGPT | GPT-5.6 Sol | 技术主控、任务拆解、数据审计、预测模型比较、证据复核、文献检索、论文一致性检查 | 赛中持续更新 |
+| Codex | 执行环境；Q1 部分阶段界面/任务记录为 Astra，最终提交前需由实际使用者核对完整模型名称 | Q1 线性规划实现、测试、真实数据求解、独立回放与续跑恢复 | 不把执行窗口自报 PASS 直接作为最终结论 |
+| ChatGPT 工作模式 | Astra（用户界面显示名，最终提交前核对完整模型名称） | 数学合同设计、current-version Mathematical Review、LP/MILP 结构对照 | 数学结论需与当前代码和 evidence 对应 |
+| ChatGPT | GPT-5.6 Sol | 论文骨架、写作协助、GitHub 论文一致性反馈 | 正式数字与数学事实仍以技术 Handoff 为准 |
 
 > 后续若使用 Codex、Claude、其他大语言模型、代码助手或 AI 智能体，应在实际使用后再加入本表，不提前填写。
 
@@ -40,6 +48,96 @@
 - **使用目的**：依据参赛须知检查电子论文与支撑材料的组织方式，并协助整理 GitHub 仓库目录。
 - **主要提示方式与过程**：要求读取最新参赛须知，逐条核对支撑材料应包含的源程序、自主查阅资料、中间结果、AI 工具使用详情、压缩格式、身份信息限制等要求，再据此修改仓库说明和提交检查清单。
 - **采纳、修改与核验**：参赛队人工确认采用“赛中以 Markdown 持续记录 AI 使用详情，最终人工核验后转换为规定名称的 PDF 并删除赛中 Markdown”的工作方式；最终支撑材料使用 WinRAR 压缩为 RAR 文件，并进行文件清单与身份信息复核。
+
+### 记录 03：赛题拆解、数据审计与技术主控
+
+- **工具 / 模型**：ChatGPT，GPT-5.6 Sol
+- **使用目的**：协助拆解 C 题四问的依赖关系，检查官方附件的字段、时间粒度、单位、预测发布时间和可能的信息泄漏风险，并持续维护 Q1—Q4 的技术路线、Gate、Task/Handoff 和待验证事项。
+- **主要提示方式与过程**：团队要求 AI 遵循既定数模工作流，不在缺少实验时补写结论。赛中反复使用的原话包括：
+  - “先验证，再写结论。 不允许为了论文完整而编造实验结果、指标、参数、图表或结论。”
+  - “代码、数据、模型、图表、论文必须一致。”
+  - “复杂模型不天然优于简单模型。 应尽可能设置合理基线，并用结果证明改进是否真实存在。”
+- **AI 输出内容概述**：形成四问递进结构、数据与时间语义审计、预测/调度接口、Q1 LP 主线、Q2 风险型购电方向、Q3 滚动更新方向、Q4 因果动态电价与 ORACLE 分离等技术建议；同时生成供不同执行窗口使用的任务包和 Controller Review。
+- **实际采纳部分**：采纳了“Q1 确定性调度内核 → Q2 预测误差与高价紧急购电 → Q3 日内滚动修正 → Q4 动态价格”的统一主线，以及 baseline、独立验证、因果信息集和分阶段审查的协作方式。
+- **人工修改部分**：团队成员根据赛题原文、执行条件和各自分工决定任务是否派发、是否继续或暂停；对 AI 提出的模型升级、参数和结论不自动采纳。
+- **人工核验方式与结果**：团队已人工确认采用上述协作流程。具体数学结论仍需 XXT Mathematical Review，代码与数值结论仍需 fresh tests/replay 后才能进入正式结果。
+- **发现并纠正的 AI 错误（如有）**：对时间标签、储能效率解释、预测模型选择时序等问题均保留过 HOLD，并通过后续数学审查或重新运行修正；未把早期诊断数字直接当作论文结果。
+- **当前状态**：`adopted=PARTIAL`；技术框架已采用，正式数值按各问 Gate 冻结。
+
+### 记录 04：Q1 线性规划代码实现、续跑恢复与独立验证
+
+- **工具 / 模型**：Codex 执行环境；Q1 部分阶段界面/任务记录为 Astra，最终提交前由实际使用者核对完整模型名称。
+- **使用目的**：实现 Q1 的 10 分钟粒度储能调度模型，完成真实附件求解、两阶段目标、效率语义对照、时间映射对照、测试、独立 validator/replay 和交付包整理。
+- **主要提示方式与过程**：执行窗口收到冻结 authority 后，主要要求包括：
+  - “不要从头重做，不要重新设计数学模型，不要相信旧窗口的 PASS 声明，先在未修改状态 fresh 跑全部 tests、replay 和 independent validator。”
+  - “普通工程问题只做最小修复；只有发现数学口径错误时才停止并升级。”
+  - “不得自行声明 Q1 / result1 / Paper Facts Frozen。”
+- **AI 输出内容概述**：实现连续 LP、Stage 1 最小购电费用、Stage 2 在 cost-preserving tolerance 内最小充放电 throughput、NO_STORAGE baseline、两套效率语义完整重求解，以及完整 SOC/能量平衡验证。
+- **实际采纳部分**：当前保留其代码和候选结果作为 `current-version candidate`，并交由 Controller fresh 复跑及 XXT/Astra 数学复审。
+- **人工修改部分**：原执行窗口因额度中断后，团队成员保留工作区并重新打包，由另一执行窗口续跑；没有为了补齐结果手工改动候选数字。
+- **人工核验方式与结果**：团队保存了中断工作区和 SHA256；Controller 后续在独立环境 fresh 执行 tests、solve、replay，并将 current-version candidate 再送数学审查。正式 Q1 结果仍未冻结。
+- **发现并纠正的 AI 错误（如有）**：发现保存的 artifact hash manifest 使用 Windows 反斜杠相对路径，在 POSIX 环境直接 replay 会失败；当前归类为工程可移植性问题，等待后续最小修复，不把它掩盖为“已完全复现”。
+- **当前状态**：`adopted=PARTIAL / PAPER_RESULT=PENDING`。
+
+### 记录 05：负荷、光伏与动态电价预测模型筛选
+
+- **工具 / 模型**：ChatGPT，GPT-5.6 Sol；配合代码执行环境完成数据计算与 fresh rerun。
+- **使用目的**：为 Q2/Q4 建立不使用未来信息的预测输入，并比较简单基线与更复杂模型是否存在稳定增益。
+- **主要提示方式与过程**：先冻结时间顺序验证规则，再比较 LAG7、TRAILING7_MEAN、SEASONAL_DOW4_MEAN、Ridge 和 HistGradientBoosting；要求后期测试集不能反向参与模型选择，复杂模型只有在预先规定的多项条件下稳定优于基线才允许替换。
+- **AI 输出内容概述**：当前 forecast-layer 保留负荷 LAG7、光伏 TRAILING7_MEAN、动态电价 LAG7；同时生成 Feb1—Dec31 causal forecast export 和净负荷 residual evidence。
+- **实际采纳部分**：保留上述模型族作为当前预测层 candidate，并把复杂模型比较降为 adequacy audit；没有因为模型更复杂而直接采用 Ridge/HGB。
+- **人工修改部分**：团队将预测层与正式购电策略分开，明确 Q2 的 5 倍紧急购电使经济目标具有不对称风险，预测 WAPE 较低不能直接等于下游调度成本最优。
+- **人工核验方式与结果**：相关结果经过 fresh rerun 和独立 leakage/known-at 检查；January bootstrap 已得到 current-version 数学审查。Q2 downstream 正式 replay 仍未完成。
+- **发现并纠正的 AI 错误（如有）**：发现 W1 的 Aug–Oct 模型选择若直接回填 Feb–Jul 会产生 model-selection-level look-ahead 风险；当前只允许把最终保留的预注册 baseline 视为 formal policy family，并等待 Q2 正式数学合同进一步封口径。
+- **当前状态**：`forecast_layer=ADOPTED_WITH_LIMITATION`；`Q2_downstream=PENDING`。
+
+### 记录 06：数学合同设计与 Mathematical Review
+
+- **工具 / 模型**：ChatGPT 工作模式，Astra（用户界面显示名，最终提交前核对完整模型名称）。
+- **使用目的**：对目标函数、hard constraints、单位、SOC 状态递推、效率语义、时间映射、信息集、结算口径和当前代码结果做独立数学审查；同时为 Q2 形成可执行的正式数学合同。
+- **主要提示方式与过程**：要求数学审查不能只接受 solver/执行窗口自报的 PASS，需独立复算 objective、完整 SOC 轨迹、能量平衡和 known_at；出现 objective、hard constraint、单位、accounting 或 material surrogate fidelity 问题时具有 Mathematical Veto。
+- **AI 输出内容概述**：已经完成过 Q1/Q2 时间语义、Q2 causal storage recourse、储能效率两种解释、annual terminal SOC、January warm-up 等合同或审查；当前正在继续 Q1 current-version Mathematical Review、LP/MILP structural cross-check，以及 Q2 Formal Optimization Spec。
+- **实际采纳部分**：已采纳通过 current-version review 的 January causal warm-up 与 Feb1 SOC bridge；其他正在运行的 Q1/Q2 审查结果不提前视为正式结论。
+- **人工修改部分**：团队按 Controller 派发的限定任务包运行 Astra，并保留“数学裁决”和“工程实现”两条权限边界；数学审查结果仍需和当前代码版本、source hash 对齐。
+- **人工核验方式与结果**：部分合同已经由团队转交执行并得到 independent replay；正在运行的 Q1 LP/MILP 与 Q2 Formal Spec 尚未完成最终人工确认。
+- **发现并纠正的 AI 错误（如有）**：对早期任意 1%/5% 等内部 screening threshold，Controller 明确降级为筛查提示，未允许其自动决定“稳健/不重要”。
+- **当前状态**：`adopted=PARTIAL / ONGOING`。
+
+### 记录 07：论文骨架、技术事实同步与一致性反馈
+
+- **工具 / 模型**：ChatGPT，GPT-5.6 Sol。
+- **使用目的**：协助论文线搭建问题背景、数据章节、Q1 方法骨架和图表计划，并检查论文中的模型、时间口径、信息集、数字和 Claim 是否与最新技术事实一致。
+- **主要提示方式与过程**：论文线按 `TECH_DIRECTION_STABLE` 逐问展开；没有 Paper Handoff 或 Frozen evidence 时，正式数字、优势、稳健性和最优性结论必须留空。另设置 GitHub Issue 评论通道，由自动巡检读取 `论文/README.md` 并反馈 P0/P1/P2 冲突。
+- **AI 输出内容概述**：生成给论文线的建模进度说明、Q1 LP 选择理由、预测模型筛选说明，并对 README 中 future-actual leakage 表述和旧模板残留等问题提出反馈。
+- **实际采纳部分**：论文线采用“稳定方法先写、结果后填”的 JIT 写作方式，并使用 Issue 评论作为技术事实反馈通道。
+- **人工修改部分**：论文正文仍由团队成员维护和改写；AI 只提供结构、草稿、问题定位和技术事实提醒，不拥有数学模型或正式数字的修改权限。
+- **人工核验方式与结果**：团队已确认使用该协作方式；最终论文的每个正式数字、图表和结论仍需对应 Paper Handoff/Frozen Source 后人工复核。
+- **发现并纠正的 AI 错误（如有）**：一致性巡检已发现并反馈过把“实际负荷和光伏”写成日初全天计划输入的潜在 future-actual leakage 表述，以及旧农业题模板残留。
+- **当前状态**：`adopted=PROCESS_ONLY`；正式论文内容持续人工核验。
+
+### 记录 08：赛题相关论文检索与来源溯源
+
+- **工具 / 模型**：ChatGPT，GPT-5.6 Sol，配合联网学术/网页检索。
+- **使用目的**：寻找与本题微网储能、日前—日内调度、0/6/12/18 forecast update、不平衡结算、rolling re-plan 和动态电价高度相关的学术原型，并判断是否存在可证实的直接赛题来源。
+- **主要提示方式与过程**：要求把结果分成“疑似直接来源 / 高度相关方法原型 / 一般背景”，不能仅凭关键词或单个倍率相同就认定赛题来源；找到外部论文后仍需在本题数据与约束下独立建模和验证。
+- **AI 输出内容概述**：定位到 Yona 等 2014 的 re-planning、姜宇等 2022 的微网日前随机优化与 1.5×/0.5×不平衡价格、Zhang 等 2021 的日前 robust + 日内 MPC 等高度相关文献；同时把“整题来自单一论文”的假说降级为未证实。
+- **实际采纳部分**：将这些文献作为 Q2/Q3 方法设计和论文引用候选，不直接移植论文参数、代码或结果。
+- **人工修改部分**：团队决定继续保留当前 Q1 LP、Q2 risk-aware、Q3 rolling/MPC、Q4 causal price 主线，不因检索到外部论文而强行换模型。
+- **人工核验方式与结果**：当前仅完成公开来源核对和初步方法映射；进入最终参考文献前仍需核对论文全文、公式语义和 bibliographic 信息。
+- **发现并纠正的 AI 错误（如有）**：第二轮检索后主动降低了 `0/6/12/18` 对“直接来源”的证据权重，因为该时间循环本身也是气象数值预报中的常见配置。
+- **当前状态**：`adopted=RESEARCH_REFERENCE / DIRECT_SOURCE_UNPROVEN`。
+
+### 记录 09：GitHub 论文一致性自动巡检
+
+- **工具 / 模型**：ChatGPT，GPT-5.6 Sol，配合 GitHub 连接器与定时任务。
+- **使用目的**：定时检查论文仓库中的 `论文/README.md`，与最新 Task/Handoff、Mathematical Review、Controller Review 和 Frozen/未冻结状态对照，尽早发现论文与技术线不一致。
+- **主要提示方式与过程**：巡检只允许在发现新的实质冲突时写入 GitHub Issue 评论，不直接改论文；同一 README 版本下相同问题不重复刷评论；authority 冲突时标 `HOLD_FOR_AUTHORITY`，不能由论文巡检自行裁决数学口径。
+- **AI 输出内容概述**：建立 `FYQ ↔ CYQ 论文一致性反馈总线`，并已反馈 Q2 potential future-actual leakage、旧模板污染、Q1 算法骨架与当前 LP 主线不一致等问题。
+- **实际采纳部分**：采用 GitHub Issue 评论作为技术线到论文线的异步反馈通道。
+- **人工修改部分**：巡检发现问题后，由论文线人工决定如何改写；若涉及数学事实则返回技术线重新裁决。
+- **人工核验方式与结果**：团队已明确同意使用该自动反馈机制；最终论文仍需人工全文一致性复核。
+- **发现并纠正的 AI 错误（如有）**：自动任务不拥有直接修改 README 的权限，避免错误审查意见自动覆盖论文正文。
+- **当前状态**：`adopted=PROCESS_ONLY / ACTIVE`。
 
 ## 四、后续追加模板
 
