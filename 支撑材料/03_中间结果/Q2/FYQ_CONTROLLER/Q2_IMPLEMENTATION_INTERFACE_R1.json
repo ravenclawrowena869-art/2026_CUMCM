@@ -1,0 +1,11 @@
+{
+  "interface_id": "CUMCM2026_C_Q2_IMPLEMENTATION_INTERFACE_R1",
+  "status": "SUPERSEDED_BY_CUMCM2026_C_Q2_IMPLEMENTATION_INTERFACE_R2",
+  "current_interface": "Q2_IMPLEMENTATION_INTERFACE_R2.json",
+  "current_execution_release": "Q2_EXECUTION_RELEASE_R1.md",
+  "traceability": {
+    "historical_base_xxt_sha256": "0d17f99f58ef469369c0958ee4795bb3e71553289c60b8bf6c3d225f52e7e561",
+    "xxt_r2_prevalidation_sha256": "63c2494eac89b164830d9e26435332f6c06afedc0234ba5a05d25468f4d0a312",
+    "pr8_d226_relation": "NOT_IN_CURRENT_EXECUTION_AUTHORITY_CHAIN"
+  }
+}
