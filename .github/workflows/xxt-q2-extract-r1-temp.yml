@@ -8,23 +8,41 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Verify and print exact R1 authority files
+      - name: Manually verify historical R1 members
         shell: bash
         run: |
           set -euo pipefail
-          ZIP='支撑材料/03_中间结果/Q2/XXT_AUTHORITY/CUMCM2026_C_XXT_Q2_FORMAL_OPT_SPEC_R1_DELIVERY.zip'
-          echo '===OUTER_SHA256==='
-          sha256sum "$ZIP"
-          echo '===ZIP_TEST==='
-          unzip -t "$ZIP" | tail -n 2
-          TMP="$(mktemp -d)"
-          unzip -q "$ZIP" -d "$TMP"
-          ROOT="$TMP/Q2_FORMAL_SPEC_R1_DELIVERY"
-          for F in XXT_Q2_RISK_PARAMETER_PROTOCOL_R1.md XXT_Q2_MODEL_FAMILY_CAUSALITY_ADJUDICATION_R1.md; do
-            echo "===FILE_SHA256:$F==="
-            sha256sum "$ROOT/$F"
-            echo "===FILE_BASE64_BEGIN:$F==="
-            base64 -w0 "$ROOT/$F"
-            echo
-            echo "===FILE_BASE64_END:$F==="
-          done
+          python3 - <<'PY'
+          import base64, hashlib, struct, zlib
+          from pathlib import Path
+          p = Path('支撑材料/03_中间结果/Q2/XXT_AUTHORITY/CUMCM2026_C_XXT_Q2_FORMAL_OPT_SPEC_R1_DELIVERY.zip')
+          b = p.read_bytes()
+          print('===OUTER_SHA256===')
+          print(hashlib.sha256(b).hexdigest(), len(b))
+          specs = [
+              ('XXT_Q2_MODEL_FAMILY_CAUSALITY_ADJUDICATION_R1.md', 69158, 1519, 2009),
+              ('XXT_Q2_RISK_PARAMETER_PROTOCOL_R1.md', 70782, 3016, 4411),
+          ]
+          for short, off, expected_csize, expected_usize in specs:
+              assert b[off:off+4] == b'PK\x03\x04', (short, off, b[off:off+4])
+              sig, ver, flag, method, mtime, mdate, crc, csize, usize, nlen, xlen = struct.unpack_from('<IHHHHHIIIHH', b, off)
+              name = b[off+30:off+30+nlen].decode('utf-8')
+              comp_start = off+30+nlen+xlen
+              comp = b[comp_start:comp_start+csize]
+              if method == 8:
+                  raw = zlib.decompress(comp, -15)
+              elif method == 0:
+                  raw = comp
+              else:
+                  raise RuntimeError(method)
+              assert csize == expected_csize, (short, csize, expected_csize)
+              assert usize == expected_usize == len(raw), (short, usize, expected_usize, len(raw))
+              assert name.endswith('/'+short), (name, short)
+              print(f'===FILE_NAME:{short}===')
+              print(name)
+              print(f'===FILE_SHA256:{short}===')
+              print(hashlib.sha256(raw).hexdigest())
+              print(f'===FILE_BASE64_BEGIN:{short}===')
+              print(base64.b64encode(raw).decode())
+              print(f'===FILE_BASE64_END:{short}===')
+          PY
