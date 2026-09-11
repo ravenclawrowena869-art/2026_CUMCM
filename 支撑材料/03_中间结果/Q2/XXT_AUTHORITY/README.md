@@ -13,14 +13,14 @@ This directory restores the directly readable XXT Q2 Formal Optimization Spec R1
 - Stable contract ID: `CUMCM2026_C_Q2_MATH_CONTRACT_R1`
 - Authority relation: original R1 mathematical delivery; not reconstructed and not superseded.
 
-The exact original ZIP was recovered from the project Library and reverified against the historical SHA256 above. The current GitHub connector does not expose a direct local-file upload action suitable for preserving that larger binary byte-for-byte. Therefore this branch commits the exact core readable MD/JSON payloads plus a compact repository mirror ZIP. This is a transport limitation only and does not modify the mathematical authority.
+The exact original ZIP was recovered from the project Library and reverified against the historical SHA256 above. The current GitHub connector does not expose a direct local-file upload action suitable for preserving that larger binary byte-for-byte. Therefore this branch commits the exact core readable MD/JSON payloads directly, together with a compact repository supplement ZIP that records provenance and repository-file checksums. This is a transport limitation only and does not modify the mathematical authority.
 
-## Repository mirror bundle
+## Repository supplement bundle
 
-- File: `CUMCM2026_C_Q2_XXT_AUTHORITY_REPO_MIRROR_R1.zip`
-- SHA256: `0e617c0972a20c56235895cadadb7f40d441b17dfb13a408267e490521695fce`
+- File: `CUMCM2026_C_Q2_XXT_AUTHORITY_REPO_SUPPLEMENT_R1.zip`
+- SHA256: `7b3e7dfe73eb3877be19302bcb9080f1ec4cd293722a30da6fc0a7cfc3213ea5`
 - ZIP CRC: `PASS`
-- Contains the core formal spec, validator, implementation handoff, contract manifest, provenance and mirror checksum manifest.
+- Purpose: transport/provenance supplement only; the actual core contract files are stored directly beside it in GitHub.
 - Authority relation: does **not** supersede or reinterpret the original XXT delivery; the historical outer hash above remains the original package identity.
 
 ## Direct-readable authority/interface files
