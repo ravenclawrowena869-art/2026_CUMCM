@@ -1,0 +1,87 @@
+{
+  "schema_version": "2.0",
+  "date": "2026-09-11",
+  "role": "XXT_MATHEMATICAL",
+  "task_type": "Q2_PREVALIDATION_Q3_PREFLIGHT_R2_MINIMAL_CORRECTION",
+  "current_canonical_workflow": {
+    "repo": "ravenclawrowena869-art/cumcm-rigorous-workflow",
+    "main_commit": "ceb5b9c09046ab2189be83b5fa2871475467179b",
+    "fresh_read": [
+      "SKILL.md",
+      "skills/cumcm-rigorous-workflow/core/SHARED_CORE.md",
+      "skills/cumcm-rigorous-workflow/profiles/XXT_MATHEMATICAL.md",
+      "04_验收冻结/05_模型证据充分性Gate.md",
+      "03_建模与代码/05_参数选择协议.md"
+    ]
+  },
+  "project_mandatory_workflows": {
+    "write_update_paper_zip_sha256": "b3e8ea8389ebb3850f50f9eecaf762c07593ff8936e2ebb9ec974e661d386000",
+    "master_workflow_v2_2_zip_sha256": "739eee72ec0a50aef596b3a19fe1f5519e2185a7de4e3488b41819a718edfe29",
+    "rigorous_legacy_zip_sha256": "72054aa654777fd2203cc8d9684166fb5fe0da364ebf29e7b562b3410045b84c"
+  },
+  "task_delta": {
+    "outer_sha256": "a90e24dd39f890861269529885899f3a4006ca9542e6e33a7fb9dc0019d107bc",
+    "internal_checksum_status": "4/4 PASS",
+    "older_parallel_zip_sha256": "6bc9a2ba787c16a37c32f232a5ff56271e4b743566e30f9a52fecf255447c500",
+    "older_parallel_zip_status": "SUPERSEDED_BY_NEWEST_DELTA"
+  },
+  "q2_authority": {
+    "contract_id": "CUMCM2026_C_Q2_MATH_CONTRACT_R1",
+    "original_package": "CUMCM2026_C_XXT_Q2_FORMAL_OPT_SPEC_R1_DELIVERY.zip",
+    "original_package_sha256": "0d17f99f58ef469369c0958ee4795bb3e71553289c60b8bf6c3d225f52e7e561",
+    "s1_mode": "S1_A_PAID_UNUSED_NORMAL_ENERGY",
+    "s1_classification": "MODELING_COMPLETION_ASSUMPTION",
+    "formal_result": "NOT_RUN",
+    "frozen": false
+  },
+  "previous_r1_return": {
+    "raw_bytes_available_in_current_inputs": false,
+    "controller_reported_sha256": "a45e636bb1aa1d008da2cbee66869c40731ef56c77ba8fc81f397f8312e9dd88",
+    "independent_byte_verification_claimed": false,
+    "controller_reported_integrity": "CRC PASS / internal checksums PASS / old synthetic oracle 17/17"
+  },
+  "q2_r2": {
+    "prevalidation_spec": "PASS",
+    "s1_balance": "q_DA - w + r + PV + d = L + c + v",
+    "normal_cost": "sum(p*q_DA)",
+    "emergency_cost": "sum(5*p*r)",
+    "adversarial_oracle": "23/23 PASS",
+    "mathematical_result_pass": false,
+    "frozen": false
+  },
+  "q3_r2": {
+    "contract_preflight": "PASS_WITH_LIMITATION",
+    "adjustment_reference_base": "PREVIOUS_ACTIVE_COMMITMENT",
+    "settlement_price_time_semantics": "DELIVERY_SLOT_PRICE",
+    "pv_hourly_to_10min_rule_id": "PV_HOURLY_LINEAR_CAUSAL_BOUNDARY_V1",
+    "adjusted_purchase_output_semantics": "FINAL_ACTIVE_COMMITMENT_PER_SLOT",
+    "mandatory_sensitivities": [
+      "FINAL_VINTAGE_VS_ORIGINAL_00",
+      "ISSUE_TIME_PRICE",
+      "PV_HOURLY_ENDPOINT_BLOCK_HOLD_V1"
+    ],
+    "formal_result": "NOT_RUN",
+    "mathematical_result_pass": false,
+    "frozen": false
+  },
+  "constituent_sha256": {
+    "00_START_HERE.md": "cf942af2c077291c56267177c77c7e63d1c3d0e63397a5cd559a411b51106b9c",
+    "STATUS_MATRIX_R2.md": "34607090542d13506425b09f26316c1e0a561a207f1d1df8444eddfad74563f9",
+    "WORKFLOW_READ_AUDIT_R2.md": "16530ea7e064ade61a295665a84996af60dd67f74e2945e4e6ce23b0ef1edf03",
+    "XXT_HANDOFF_TO_FYQ_R2.md": "efd683a96a57f02aed5b8a49dca9deb0cf04c73f29aafde9a5b30bda40a1f784",
+    "XXT_Q2_ADVERSARIAL_CASES_R2.csv": "f61f25a8f1497ccbf6cd7a49df286bf2eb25de039c433db605ae32e156398a65",
+    "XXT_Q2_ADVERSARIAL_CASES_R2.md": "d1ea9bda9b60ff1cf64bb43004c7a704107a44d216015ab5d58a569572aaf8eb",
+    "XXT_Q2_ADVERSARIAL_REPORT_R2.md": "921cd5f55c01d237424184f60d9596486834c9e001534dd38115c16b376e4144",
+    "XXT_Q2_ADVERSARIAL_RESULTS_R2.csv": "115b7f5ebc39210f7b83918af41a1e6ae9df104d72c84d14005a3fbffb84531f",
+    "XXT_Q2_VALIDATOR_SPEC_PREVALIDATION_R2.md": "323826db6240cd48ac36df2833d0088a7c304ed4d68b37fc63e4b139ec25c4b5",
+    "XXT_Q3_AUTHORITY_DECISION_REVIEW_R2.md": "f07651398a230a920e8d1148ce0b233dffbe8703bc2c99c10ff2cc3ac9289b02",
+    "XXT_Q3_MATH_CONTRACT_PREFLIGHT_R2.md": "2975e298cc8bac9edb574ad452c167d8429b4ab9315f7c09b62983163089800a",
+    "adversarial_oracle_stdout.txt": "d1754883a8350fd9eb017fe2dcdf838536d3c785dbc997555e5ec89b374994a9",
+    "run_q2_adversarial_oracle_r2.py": "a1794a4ce414a8d725010743f511de470927a75afb17fbc843f77e16e2a1e486"
+  },
+  "ai_use": {
+    "role": "Mathematical specification, adversarial validator generation and authority review",
+    "human_verification": "PENDING_TEAM_REVIEW",
+    "team_decision": "PENDING_FYQ_INTEGRATION"
+  }
+}
