@@ -1,0 +1,54 @@
+{
+  "freeze_id": "CUMCM2026_C_Q2_MODELING_PLAN_FREEZE_R1_20260911",
+  "scope": "MODEL_PLAN_AND_EXECUTION_SPEC_ONLY",
+  "status": "PASS",
+  "q2_prevalidation_spec": "PASS",
+  "q2_execution_release": "RELEASED",
+  "q2_formal_result": "NOT_RUN",
+  "q2_mathematical_result_pass": false,
+  "q2_frozen": false,
+  "authority": {
+    "base_xxt_r1_sha256": "0d17f99f58ef469369c0958ee4795bb3e71553289c60b8bf6c3d225f52e7e561",
+    "xxt_r2_prevalidation_sha256": "63c2494eac89b164830d9e26435332f6c06afedc0234ba5a05d25468f4d0a312",
+    "fyq_controller_pr": 6,
+    "fyq_controller_branch": "fyq/q2-controller-restore-20260911",
+    "fyq_controller_head_at_freeze": "07413d24e290804b979188aad521809e9dcba623",
+    "parallel_pr8": "NOT_IN_CURRENT_AUTHORITY_CHAIN"
+  },
+  "formal_period": {
+    "start": "2025-02-01",
+    "end": "2025-12-31",
+    "days": 334,
+    "slots_per_day": 144,
+    "formal_slots": 48096
+  },
+  "primary": {
+    "point_da": "POINT_DA_LP_R1",
+    "risk_da": "SIGNED_RESIDUAL_Q80_MARGIN_R1",
+    "causal_storage": "Q2_RH_FIXED_Q_LP_R1",
+    "fixed_storage_baseline": "DAY_AHEAD_FIXED_STORAGE_WITH_SAFETY_OVERRIDE",
+    "alpha": 0.8,
+    "eta_c": 0.9,
+    "eta_d": 0.9,
+    "timing": "CURRENT_SLOT_ACTUAL",
+    "terminal": "FREE_BOUNDED_YEAR_END",
+    "s1": "S1_A_PAID_UNUSED_NORMAL_ENERGY"
+  },
+  "mandatory_sensitivities": [
+    "alpha_0.75",
+    "alpha_0.80",
+    "alpha_0.85",
+    "ONE_SLOT_DELAYED_ACTUAL",
+    "eta_sqrt_0.9",
+    "EQ_INITIAL_6000",
+    "GE_INITIAL_6000",
+    "24H_TAIL_DIAGNOSTIC"
+  ],
+  "compute_routing": {
+    "astra_high": "CORE_ENGINE_AND_FIRST_CANONICAL_FULLYEAR_RUN_ONLY",
+    "fyq_sol_high": "FULL_EVIDENCE_CAMPAIGN_AND_TECHNICAL_CANDIDATE",
+    "xxt_sol_high_or_extra_high": "MATHEMATICAL_REVIEW_AND_INDEPENDENT_RECOMPUTATION"
+  },
+  "reopen_rule": "P0_OR_OFFICIAL_CHANGE_OR_XXT_VETO_OR_EXECUTION_EVIDENCE",
+  "created_date": "2026-09-11"
+}
