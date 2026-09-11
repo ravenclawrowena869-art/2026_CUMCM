@@ -9,3 +9,4 @@
 - XXT R2 SHA: `63c2494eac89b164830d9e26435332f6c06afedc0234ba5a05d25468f4d0a312`
 - PR #8 `d22609f9...`: `PARALLEL_NONCANONICAL_REPACKAGE`
 - current handoff: `HANDOFF_TO_CYQ_CODEX_R2.md`
+- candidate return route: `CYQ Codex/Astra -> FYQ -> XXT -> Evidence Gate -> Freeze decision`
