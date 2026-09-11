@@ -1,0 +1,24 @@
+case_id,category,mutation,expected_code,description
+A00,positive,valid_source_resolved,PASS,Valid S1-A source-resolved slot with separate w and v
+A01,S1,old_generic_spill,FAIL_S1_SOURCE_RESOLUTION,Old R1 generic spill semantics must be rejected
+A02,S1,w_gt_q,FAIL_S1_BOUNDS,Paid-unused normal energy cannot exceed commitment
+A03,S1,v_gt_pv,FAIL_S1_BOUNDS,PV curtailment cannot exceed PV availability
+A04,S1,w_relabel_pv,FAIL_S1_LABEL,w must not be relabeled as PV curtailment
+A05,accounting,normal_cost_received,FAIL_ACCOUNTING,Normal billing must use full q_DA not q_DA-w
+A06,accounting,emergency_multiplier_1x,FAIL_ACCOUNTING,Emergency purchase must be billed at 5x slot tariff
+A07,commitment,q_mutated_after_0000,FAIL_COMMITMENT,q_DA is immutable after 00:00
+A08,causality,future_actual_known_at,FAIL_LEAKAGE,Future actual cannot enter current decision
+A09,price,dynamic_price_in_q2,FAIL_PRICE_SOURCE,Q2 must use Attachment1 fixed repeated tariff
+A10,policy,emergency_and_charge,FAIL_EMERGENCY_CHARGING,Emergency purchase cannot be used while charging under Q2 policy
+A11,physics,simultaneous_charge_discharge,FAIL_PHYSICS,Simultaneous charge and discharge is forbidden for executed action
+A12,physics,soc_below_bound,FAIL_PHYSICS,Full SOC path must respect lower bound
+A13,dynamic,daily_soc_reset,FAIL_CROSS_DAY_SOC,Formal run cannot reset SOC at day boundary
+A14,terminal,t1_mismatch_marked_pass,FAIL_TERMINAL,T1 terminal mismatch cannot be reported as PASS
+A15,risk,alpha_change_no_replan,FAIL_RISK_PROTOCOL,Changing risk alpha requires full replan and replay
+A16,baseline,fixed_action_amplified,FAIL_BASELINE,Fixed-storage baseline safety override cannot amplify the planned action
+A17,evidence,missing_delayed_actual_sensitivity,FAIL_EVIDENCE,ONE_SLOT_DELAYED_ACTUAL counterfactual plan is required before Freeze
+A18,evidence,missing_w_audit,FAIL_S1_EVIDENCE,S1-A must report paid-unused normal-energy evidence
+A19,evidence,total_spill_only,FAIL_S1_EVIDENCE,u_total cannot replace separate w and v evidence
+A20,mapping,wrong_time_mapping,FAIL_MAPPING,Writer must use frozen right-endpoint ordinal mapping
+A21,positive,valid_utotal_compat,PASS,u_total=w+v is allowed only as a compatibility summary beside source-resolved fields
+A22,accounting,total_cost_adds_w_again,FAIL_ACCOUNTING,w evidence cost is diagnostic subset of p*q and must not be added again to total cost
