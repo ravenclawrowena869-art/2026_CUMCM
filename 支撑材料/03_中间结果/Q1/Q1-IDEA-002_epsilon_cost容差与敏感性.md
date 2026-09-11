@@ -1,7 +1,7 @@
 # Q1-IDEA-002 Stage-2 `epsilon_cost` 容差与敏感性
 
 - `IDEA_ID`: `Q1-IDEA-002`
-- `STATUS`: `UNDER_REVIEW`
+- `STATUS`: `EVIDENCE_READY_PENDING_FREEZE`
 - `AUTHORITY`: `WORKING_IDEA_ONLY`
 - `OWNER`: `FYQ / CYQ`
 - `CREATED_AT`: `2026-09-11`
@@ -13,7 +13,11 @@ CYQ 在 Issue #1 comment `5628557368` 指出：`epsilon_cost=1e-4 CNY` 不能解
 
 FYQ 在 comment `5628673718` 接受该问题为 `P1_EVIDENCE_GAP`，完成一次独立 controller cross-check，并下发 exact-environment confirmatory sensitivity。
 
-Q1 Post-Closeout R2 随后完成 exact-environment fresh sweep，并由 FYQ Controller 再次 fresh 复核。
+Q1 Post-Closeout R2 随后完成 exact-environment fresh sweep。R2 delivery SHA256：
+
+`a8acd57687c9a2380ab089e14c23bfec467dca7882b51f7777c9f97ed4977058`
+
+FYQ Controller 对 R2 又做了 fresh 复核：完整测试 `64 passed + 65 subtests passed`，saved replay PASS，epsilon sweep fresh rerun `5/5` 通过；R1→R2 的 `src/ + tests/ + results/ + source/ + result1_candidate.xlsx` 共 47 个正式 artifact hash 差异为 0。
 
 Comment：
 - https://github.com/ravenclawrowena869-art/2026_CUMCM/issues/1#issuecomment-5628557368
@@ -57,7 +61,7 @@ Q1 R2 在正式执行环境 fresh 重新求解：
 - `1e-2` 的指定购电时段差仍为 `0`；
 - 未发现会改变 Q1 正文结论的 material reversal。
 
-FYQ Controller cross-check 与 exact-environment 返回结果在公共数值字段上的最大差约 `7.3e-12`。
+FYQ 在另一套 Linux / SciPy 环境再次 fresh 执行同一 sweep，除 runtime 与环境版本元数据外，公共 numeric 字段与正式 Windows R2 输出一致。
 
 ## 参数证据裁决
 
@@ -79,16 +83,18 @@ FYQ Controller cross-check 与 exact-environment 返回结果在公共数值字�
 
 ## 当前未解决项
 
-- Q1 尚未进入最终 Freeze；
-- final controller Freeze Manifest / provenance closure 尚待完成；
-- AI/human adoption 与来源 limitation 仍需按最终 Gate 闭合。
+- Q1 Blind Red Team 数值独立复算已经通过，不再是 blocker；
+- Q1 R2 reconciliation 与 epsilon confirmatory sensitivity 已通过 FYQ Controller fresh review；
+- Q1 Final Evidence Gate / technical Freeze 尚未正式签发；
+- human adoption / AI disclosure 状态仍需登记；
+- legacy workflow source limitation 已有用户批准的 replacement-authority 方案，仍待团队 review / canonical closure。
 
 ## 当前团队决定
 
 - 保留 `epsilon_cost=1e-4 CNY`；
 - sensitivity evidence 已具备，可进入后续 Q1 Paper Handoff；
 - 不改变正式 Q1 模型和 result1；
-- 在 Q1 Freeze 前继续保持 `WORKING_IDEA_ONLY`。
+- 在 Q1 Final Evidence Gate 签发前继续保持 `WORKING_IDEA_ONLY`。
 
 ## Graduation
 
