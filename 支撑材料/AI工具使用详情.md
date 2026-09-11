@@ -1,6 +1,8 @@
 # AI 工具使用详情（赛中持续记录稿）
 
 > 本文件仅用于竞赛期间持续记录，不是最终提交件。每完成一个实际使用 AI 的阶段，应及时追加真实记录，不得为了“补齐”材料而事后编造。最终提交前，经全队人工核验后，将本文件整理并转换为 **`AI 工具使用详情.pdf`**，随后删除本 Markdown 文件。
+>
+> **原始互动证据**：本文件现在作为阶段摘要索引使用。比赛期间与 AI 的关键 Prompt、AI 回复原文、执行窗口原话和人工后续，优先追加到同目录的 **`AI互动原始记录.md`**。最终整理 AI 使用详情时，应先回溯原始互动记录，再补充人工核验、采纳状态和正式 artifact，避免只依赖赛后概括。
 
 ## 一、记录要求
 
@@ -91,7 +93,7 @@
 
 - **工具 / 模型**：ChatGPT 工作模式，Astra（用户界面显示名，最终提交前核对完整模型名称）。
 - **使用目的**：对目标函数、hard constraints、单位、SOC 状态递推、效率语义、时间映射、信息集、结算口径和当前代码结果做独立数学审查；同时为 Q2 形成可执行的正式数学合同。
-- **主要提示方式与过程**：要求数学审查不能只接受 solver/执行窗口自报的 PASS，需独立复算 objective、完整 SOC 轨迹、能量平衡和 known-at；出现 objective、hard constraint、单位、accounting 或 material surrogate fidelity 问题时具有 Mathematical Veto。
+- **主要提示方式与过程**：要求数学审查不能只接受 solver/执行窗口自报的 PASS，需独立复算 objective、完整 SOC 轨迹、能量平衡和 known_at；出现 objective、hard constraint、单位、accounting 或 material surrogate fidelity 问题时具有 Mathematical Veto。
 - **AI 输出内容概述**：已经完成过 Q1/Q2 时间语义、Q2 causal storage recourse、储能效率两种解释、annual terminal SOC、January warm-up 等合同或审查；当前正在继续 Q1 current-version Mathematical Review、LP/MILP structural cross-check，以及 Q2 Formal Optimization Spec。
 - **实际采纳部分**：已采纳通过 current-version review 的 January causal warm-up 与 Feb1 SOC bridge；其他正在运行的 Q1/Q2 审查结果不提前视为正式结论。
 - **人工修改部分**：团队按 Controller 派发的限定任务包运行 Astra，并保留“数学裁决”和“工程实现”两条权限边界；数学审查结果仍需和当前代码版本、source hash 对齐。
