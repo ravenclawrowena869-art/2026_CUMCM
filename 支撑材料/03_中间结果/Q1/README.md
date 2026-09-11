@@ -6,11 +6,13 @@
 
 Q1 已完成 `MODEL_AND_RESULT` Freeze。正式模型、正式数字与论文接口以当前 Frozen Source of Truth / Final Paper Handoff 为准；本目录中的 IDEA 文件不得覆盖 Frozen 事实。
 
-当前可直接供论文消费的图表证据位于：
+当前正式图表链位于：
 
-`FIGURES_A_R1/`
+`FIGURE_CHAIN_R2/`
 
-其中包含 Frozen figure data、metrics、Figure Registry 草案和可复现绘图脚本。
+其中包含三角色合并后的 Figure Registry R2、Figure Data、论文表格、可编辑绘图脚本对应输出、300 dpi PNG、PDF/SVG、数学/论文审查证据和 clean replay archive。当前论文视觉选择为 `SELECT_1_MAIN_FIGURE`。
+
+历史 `FIGURES_A_R1/` 保留为 `DRAFT_REFERENCE_ONLY / legacy reference`，不得覆盖 R2 Figure Registry 与最终图表选择。
 
 ## IDEA 记录规则
 
