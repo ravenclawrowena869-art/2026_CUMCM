@@ -1,0 +1,103 @@
+# Q1-IDEA-002 Stage-2 `epsilon_cost` 容差与敏感性
+
+- `IDEA_ID`: `Q1-IDEA-002`
+- `STATUS`: `EVIDENCE_READY_PENDING_FREEZE`
+- `AUTHORITY`: `WORKING_IDEA_ONLY`
+- `OWNER`: `FYQ / CYQ`
+- `CREATED_AT`: `2026-09-11`
+- `LAST_UPDATED`: `2026-09-11`
+
+## 来源互动
+
+CYQ 在 Issue #1 comment `5628557368` 指出：`epsilon_cost=1e-4 CNY` 不能解释成求解器自身 numerical tolerance，应视为人为设置的 cost-preserving tolerance，并建议做数量级敏感性。
+
+FYQ 在 comment `5628673718` 接受该问题为 `P1_EVIDENCE_GAP`，完成一次独立 controller cross-check，并下发 exact-environment confirmatory sensitivity。
+
+Q1 Post-Closeout R2 随后完成 exact-environment fresh sweep。R2 delivery SHA256：
+
+`a8acd57687c9a2380ab089e14c23bfec467dca7882b51f7777c9f97ed4977058`
+
+FYQ Controller 对 R2 又做了 fresh 复核：完整测试 `64 passed + 65 subtests passed`，saved replay PASS，epsilon sweep fresh rerun `5/5` 通过；R1→R2 的 `src/ + tests/ + results/ + source/ + result1_candidate.xlsx` 共 47 个正式 artifact hash 差异为 0。
+
+Comment：
+- https://github.com/ravenclawrowena869-art/2026_CUMCM/issues/1#issuecomment-5628557368
+- https://github.com/ravenclawrowena869-art/2026_CUMCM/issues/1#issuecomment-5628673718
+
+## 当前综合思路
+
+Stage 2 的 `epsilon_cost` 用于允许在 Stage-1 经济最优值附近，从近似等价的轨迹中选择 throughput 更小、解释更干净的调度方案。
+
+因此论文不能把 `1e-4 CNY` 写成“求解器误差”。准确语义为：
+
+`人为设定的极小 cost-preserving tolerance`
+
+正式默认继续使用：
+
+`epsilon_cost = 1e-4 CNY`
+
+本轮 sensitivity 用来验证该设计是否处在稳定区间，不把 retrospective sweep 伪装成事前参数最优化，也不声称 `1e-4` 是数学意义上的最优 epsilon。
+
+## exact-environment sensitivity 证据
+
+Q1 R2 在正式执行环境 fresh 重新求解：
+
+`epsilon ∈ {1e-6,1e-5,1e-4,1e-3,1e-2} CNY`
+
+五个点全部满足：
+
+- Stage-1 optimum 不变；
+- Stage-2 cost gap 满足各自 epsilon cap；
+- hard-constraint replay PASS；
+- simultaneous charge/discharge = 0；
+- SOC 始终在 `[1200,10800] kWh`；
+- 六个指定购电时段相对 `1e-4` 均无变化。
+
+相对 `1e-4`：
+
+- `1e-6` 至 `1e-3` 最大 SOC 差约 `0.0100847869 kWh`；
+- `1e-6` 至 `1e-3` 最大 4h 聚合差约 `0.0112053188 kWh`；
+- `1e-2` wider stress 最大 SOC 差约 `0.1109326561 kWh`；
+- `1e-2` 最大 4h 聚合差约 `0.1232585068 kWh`；
+- `1e-2` 的指定购电时段差仍为 `0`；
+- 未发现会改变 Q1 正文结论的 material reversal。
+
+FYQ 在另一套 Linux / SciPy 环境再次 fresh 执行同一 sweep，除 runtime 与环境版本元数据外，公共 numeric 字段与正式 Windows R2 输出一致。
+
+## 参数证据裁决
+
+当前证据支持：
+
+`1e-4 CNY` 位于本次测试得到的稳定 plateau 内，可以作为 Stage-2 的固定数值设计继续使用。
+
+当前不支持：
+
+- `1e-4` 是“最优 epsilon”；
+- `1e-4` 来源于求解器自身 numerical tolerance；
+- 官方题目规定了某个货币最小结算精度，因此必须取 `1e-4`。
+
+因此论文推荐写成：
+
+> 第二阶段在第一阶段最优购电费用附近设置极小的 cost-preserving tolerance，并在该容差内最小化储能充放电总量。数量级敏感性结果表明，在所检验区间内核心调度结论保持稳定，因此本文采用 `1e-4 CNY` 作为固定的二阶段数值容差。
+
+正式写作时仍应根据篇幅调整，不要把这段扩写成“epsilon 全局最优性证明”。
+
+## 当前未解决项
+
+- Q1 Blind Red Team 数值独立复算已经通过，不再是 blocker；
+- Q1 R2 reconciliation 与 epsilon confirmatory sensitivity 已通过 FYQ Controller fresh review；
+- Q1 Final Evidence Gate / technical Freeze 尚未正式签发；
+- human adoption / AI disclosure 状态仍需登记；
+- legacy workflow source limitation 已有用户批准的 replacement-authority 方案，仍待团队 review / canonical closure。
+
+## 当前团队决定
+
+- 保留 `epsilon_cost=1e-4 CNY`；
+- sensitivity evidence 已具备，可进入后续 Q1 Paper Handoff；
+- 不改变正式 Q1 模型和 result1；
+- 在 Q1 Final Evidence Gate 签发前继续保持 `WORKING_IDEA_ONLY`。
+
+## Graduation
+
+若 Q1 Final Evidence Gate 通过：
+
+`Q1 FINAL Paper Handoff → 参数/数值设计说明 + epsilon sensitivity evidence`
