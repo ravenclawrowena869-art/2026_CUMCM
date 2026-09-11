@@ -1,0 +1,86 @@
+{
+  "interface_id": "CUMCM2026_C_Q2_IMPLEMENTATION_INTERFACE_R2",
+  "active_role": "FYQ_TECHNICAL_ORCHESTRATOR",
+  "status": "READY_FOR_CANDIDATE_EXECUTION",
+  "math_contract_id": "CUMCM2026_C_Q2_MATH_CONTRACT_R1",
+  "base_math_package_sha256": "0d17f99f58ef469369c0958ee4795bb3e71553289c60b8bf6c3d225f52e7e561",
+  "xxt_r2_prevalidation_sha256": "63c2494eac89b164830d9e26435332f6c06afedc0234ba5a05d25468f4d0a312",
+  "parallel_pr8_package_sha256": "d22609f9ec0368888472945f948de66fb70669a3bc89877574fd0ab8834ea54c",
+  "parallel_pr8_relation": "PARALLEL_NONCANONICAL_REPACKAGE_NOT_IN_EXECUTION_CHAIN",
+  "time": {
+    "slot_minutes": 10,
+    "slots_per_day": 144,
+    "delta_t_hours": 0.16666666666666666,
+    "time_mapping_version": "C_R1_RIGHT_ENDPOINT_ORDINAL_EXPORT",
+    "formal_period": "2025-02-01..2025-12-31",
+    "formal_days": 334,
+    "formal_slots": 48096,
+    "warmup_period": "2025-01-01..2025-01-31"
+  },
+  "storage": {
+    "capacity_kWh": 12000,
+    "soc_min_kWh": 1200,
+    "soc_max_kWh": 10800,
+    "charge_power_max_kW": 5000,
+    "discharge_power_max_kW": 5000,
+    "slot_energy_max_kWh": 833.3333333333334,
+    "eta_c": 0.9,
+    "eta_d": 0.9,
+    "soc_recursion": "E_after=E_before+eta_c*c-d/eta_d",
+    "cross_day": "NO_DAILY_RESET",
+    "primary_year_end_terminal": "FREE_BOUNDED_YEAR_END",
+    "terminal_sensitivities": ["EQ_INITIAL_6000", "GE_INITIAL_6000"]
+  },
+  "s1": {
+    "mode": "S1_A_PAID_UNUSED_NORMAL_ENERGY",
+    "classification": "MODELING_COMPLETION_ASSUMPTION",
+    "physical_balance": "q_DA-w+r+PV+d=L+c+v",
+    "w_rule": "0<=w<=q_DA; paid unused normal commitment",
+    "v_rule": "0<=v<=PV; PV curtailment",
+    "actual_surplus_decomposition": "u=max(q_DA+PV+d-L-c,0); v=min(PV,u); w=u-v",
+    "normal_cost": "sum(p*q_DA)",
+    "emergency_cost": "sum(5*p*r)",
+    "no_double_count_pw": true
+  },
+  "information": {
+    "day_ahead_time": "daily 00:00",
+    "future_actual_day_ahead": "FORBIDDEN",
+    "q_DA_intraday_mutation": "FORBIDDEN",
+    "primary_storage_timing": "CURRENT_SLOT_ACTUAL",
+    "mandatory_timing_sensitivity": "ONE_SLOT_DELAYED_ACTUAL",
+    "delayed_protocol": "Q2_DELAYED_ACTUAL_SENSITIVITY_PROTOCOL_R1.md"
+  },
+  "risk": {
+    "policy": "SIGNED_RESIDUAL_Q80_MARGIN_R1",
+    "alpha_primary": 0.8,
+    "alpha_sensitivity": [0.75, 0.85],
+    "history": "expanding same-slot signed residual history",
+    "strict_cutoff": "target_ts < current_day_00:00",
+    "calibration_earliest": "2025-01-08",
+    "quantile": "nearest-rank ceil(alpha*n)",
+    "n_zero_warmup_fallback": "reserve=0 + INSUFFICIENT_HISTORY_POINT_FALLBACK",
+    "formal_period_unexpected_n_zero": "FAIL_RISK_PROVENANCE",
+    "binding": "Q2_RISK_HISTORY_COLD_START_BINDING_R1.md"
+  },
+  "policies": {
+    "point_day_ahead": "POINT_DA_LP_R1",
+    "causal_storage": "Q2_RH_FIXED_Q_LP_R1",
+    "fixed_storage_baseline": "DAY_AHEAD_FIXED_STORAGE_WITH_SAFETY_OVERRIDE",
+    "risk_candidate": "SIGNED_RESIDUAL_Q80_MARGIN_R1"
+  },
+  "mandatory_evidence": {
+    "delayed_actual": "full replay",
+    "risk_alpha": "0.75/0.80/0.85 each replan + full replay",
+    "s1_audit": "w/v source-resolved",
+    "tail_diagnostic": "Q2_24H_TAIL_DIAGNOSTIC_PROTOCOL_R1.md",
+    "full_path_soc": true,
+    "independent_accounting": true,
+    "result2_saved_readback": true
+  },
+  "release": {
+    "full_year_candidate_execution": "RELEASED",
+    "mathematical_result_pass": false,
+    "frozen": false,
+    "paper_numbers": "FORBIDDEN_UNTIL_FREEZE"
+  }
+}
