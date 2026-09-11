@@ -1,0 +1,4 @@
+figure_id,question,type,purpose,claim,data_owner,freeze_version,source_file,script,time_scope,window_rule,selection_reason,reviewer,status,layout_risk
+Q1_MAIN_FIGURE_R2,Q1,mechanism,连接电价、负荷/PV预测、购电、储能动作与SOC,跨时段充放电重构购电时序，SOC全过程满足边界并回到初值,FYQ,CUMCM2026_C_Q1_FREEZE_R0_20260911,generated/Q1_FIGURE_DATA_R2.csv,plots/make_q1_main_figure_r2.py,00:00-24:00,FULL_HORIZON,CYQ SELECT_1_MAIN_FIGURE；避免旧图重复,CYQ+XXT+FYQ,FINAL,MEDIUM；通栏四联图需按论文实际尺寸复核字号
+Q1_LEGACY_FIG_01,Q1,mechanism,旧联合调度参考,历史参考，不进入正文,FYQ,CUMCM2026_C_Q1_FREEZE_R0_20260911,legacy A_R1 reference,legacy A_R1 reference,00:00-24:00,FULL_HORIZON,被Q1_MAIN_FIGURE_R2替代,CYQ+XXT,DRAFT,REPLACED
+Q1_LEGACY_FIG_02,Q1,diagnostic,旧基线/优化购电时序比较,支撑材料诊断，不进入正文,FYQ,CUMCM2026_C_Q1_FREEZE_R0_20260911,legacy A_R1 reference,legacy A_R1 reference,00:00-24:00,FULL_HORIZON,经济比较改用小表，避免误读为削峰,CYQ+XXT,DRAFT,SUPPORT_ONLY

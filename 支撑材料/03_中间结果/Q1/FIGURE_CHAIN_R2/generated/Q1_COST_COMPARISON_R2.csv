@@ -1,0 +1,3 @@
+scenario,total_cost_cny,savings_absolute_cny,savings_percent,baseline_definition
+无储能基线,48052.0465908467,0,0,no-storage structural baseline; no storage; no selling; PV surplus curtailed
+两阶段LP储能调度,35126.9486892896,12925.097901557,26.8981215547625,comparison against the same no-storage structural baseline

@@ -1,5 +1,20 @@
 # Q1 Figures A R1 仓库索引
 
+## R2 状态更新（2026-09-11）
+
+`FIGURES_A_R1 = DRAFT_REFERENCE_ONLY / LEGACY_REFERENCE`
+
+当前正式 Figure chain：
+`../FIGURE_CHAIN_R2/`
+
+当前论文视觉选择：
+`Q1_FIGURE_SELECTION = SELECT_1_MAIN_FIGURE`
+
+旧 R1 两图仅保留用于 provenance、regression 和历史审计，不再作为最终论文图设计 authority。Q1 模型与结果 Freeze 未重开：
+`Q1_MODEL_RESULT_FREEZE = PRESERVED`
+
+---
+
 完整本地图表包：
 `CUMCM2026_C_Q1_FIGURES_A_R1.zip`
 
@@ -15,11 +30,11 @@ SHA256：
 Freeze：
 `CUMCM2026_C_Q1_FREEZE_R0_20260911`
 
-图表：
+历史图表：
 1. `Q1_FIG_01_购电与储能联合调度结果`
 2. `Q1_FIG_02_储能优化前后购电曲线对比`
 
-完整本地 ZIP 中含：
+历史完整本地 ZIP 中含：
 - 300 dpi PNG
 - PDF
 - SVG
@@ -28,13 +43,6 @@ Freeze：
 - `Q1_FIGURE_REGISTRY_R1.csv`
 - metrics/provenance/README/checksums
 
-GitHub repository-native ZIP 与解压目录保留：
-- 完整 144 槽 Frozen Figure Data；
-- frozen metrics；
-- Figure Registry；
-- 可编辑绘图脚本；
-- provenance / checksum。
+GitHub repository-native ZIP 与解压目录保留完整 144 槽 Frozen Figure Data、frozen metrics、旧 Figure Registry、可编辑绘图脚本和 provenance/checksum。
 
-CYQ 可直接从 GitHub 下载 repository-native ZIP，或读取解压文件核对数据和复现。运行 `make_q1_figures.py` 会从冻结 Figure Data 重新导出同规格 PNG/PDF/SVG；正式论文图不得从截图或聊天数字反推。
-
-用途：供 CYQ Paper 选择、排版与 Figure Review。技术数据来自 Q1 Frozen Output，版式可调整，但 Frozen 数值和技术含义只读。
+自 R2 起，CYQ / FYQ / XXT 应使用 `FIGURE_CHAIN_R2` 的三角色合并结果进行论文图表选择与复现；不得因旧图已经存在而强制入文。
