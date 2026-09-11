@@ -36,6 +36,44 @@
 
 `HOLD_FOR_AUTHORITY`
 
+## 1.1 补充材料的统一上传位置（必须遵守）
+
+XXT GPT 和 FYQ GPT 生成的**全部补充材料**必须上传到以下仓库目录内：
+
+```text
+ravenclawrowena869-art/2026_CUMCM
+└── 支撑材料
+    └── 03_中间结果
+        └── Q2
+```
+
+为避免两边文件混在一起，统一使用以下子目录：
+
+```text
+支撑材料/03_中间结果/Q2/
+├── XXT_AUTHORITY/
+│   ├── XXT 数学 authority ZIP
+│   └── ZIP 中的关键 MD / JSON 原文件
+└── FYQ_CONTROLLER/
+    ├── FYQ Controller ZIP
+    └── ZIP 中的关键 MD / JSON 原文件
+```
+
+具体要求：
+
+- XXT GPT 将原始数学契约包或新的 superseding 数学补件包，上传到
+  `支撑材料/03_中间结果/Q2/XXT_AUTHORITY/`；
+- FYQ GPT 将原始 Controller Review 包或新的 Controller 补件包，上传到
+  `支撑材料/03_中间结果/Q2/FYQ_CONTROLLER/`；
+- 除完整 ZIP 外，包内承担 authority、接口和审查作用的 MD / JSON 文件也要解压后上传，方便其他 GPT 在 GitHub 中直接读取；
+- 每个子目录必须包含一个 `README.md`，列出文件名、版本、外层 SHA256、内部合同 ID、状态和 supersede 关系；
+- 所有文件通过各自的非 main 分支提交，并创建或更新 PR；
+- 不能只在聊天窗口、Library、网盘或本地文件夹中返回附件；GitHub Q2 目录必须保留可追踪副本；
+- 不得把这些文件上传到 `支撑材料/01_源程序/Q2/`、论文目录或其他问题的文件夹；
+- 若 ZIP 过大导致 GitHub 拒绝，应先把关键 MD / JSON 与 manifest 上传到上述目录，并在 `README.md` 中记录完整 ZIP 的文件名、SHA256、持久下载位置和不可直接入库的原因。
+
+上述路径是本轮补件的统一落点。文件上传到其他位置，或只通过聊天回传，都不能视为解除 `HOLD_FOR_AUTHORITY`。
+
 ## 2. 已完成且无需两边重复做的工作
 
 当前执行窗口已经完成：
