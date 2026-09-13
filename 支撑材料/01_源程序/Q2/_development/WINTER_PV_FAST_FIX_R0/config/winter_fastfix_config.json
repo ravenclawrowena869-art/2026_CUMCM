@@ -1,0 +1,18 @@
+{
+  "config_id": "Q2_WINTER_PV_FAST_FIX_R0_AMENDMENT_A1_A4",
+  "formal_start": "2025-02-01",
+  "formal_end": "2025-12-31",
+  "initial_soc_kwh": 6000.0,
+  "k_candidates": [7, 14, 28],
+  "tuning_window": ["2025-09-01", "2025-10-31"],
+  "winter_evaluation_window": ["2025-11-01", "2025-12-31"],
+  "evaluation_window_label": "pre-designated winter evaluation window",
+  "eps_E_kwh": 1e-9,
+  "relative_tie_tol": 1e-6,
+  "rho_clip": null,
+  "insufficient_history_policy": "IDENTITY_RHO_1_UNTIL_EXACT_K_VALID_RATIOS",
+  "ratio_latest_legal_complete_day": "d-2",
+  "historical_forecast_provenance_required": true,
+  "soc_chronology": "EACH_K_X_POLICY_FROM_FEB01_6000_OWN_CAUSAL_CARRY_NO_WINDOW_RESET",
+  "oracle_boundary": "DIAGNOSTIC_ONLY_FUTURE_LEAKAGE_BY_DESIGN"
+}

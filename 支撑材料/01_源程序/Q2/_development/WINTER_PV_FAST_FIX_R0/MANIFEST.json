@@ -1,0 +1,35 @@
+{
+  "package_id": "CUMCM2026_C_Q2_FYQ_WINTER_PV_FAST_FIX_R0_DELIVERY",
+  "task_id": "CUMCM2026_C_Q2_FYQ_WINTER_PV_FAST_FIX_R0",
+  "decision": "P3_AMPCORR_TECHNICAL_CANDIDATE_READY_FOR_XXT",
+  "selected_K": 7,
+  "q2_freeze": false,
+  "overwrite_current_P3": false,
+  "M3_replay_authorized": false,
+  "authoritative_result_namespaces": [
+    "outputs/exact_tuning",
+    "outputs/exact_winter_eval",
+    "outputs/exact_full_year",
+    "outputs/exact_oracle",
+    "outputs/stage_a",
+    "evidence/FINAL_INDEPENDENT_VERIFICATION.json"
+  ],
+  "non_authoritative_implementation_history": [
+    "outputs/tuning",
+    "outputs/winter_eval",
+    "src/q2fyq",
+    "provenance/planner_vs_R2.patch"
+  ],
+  "frozen_runner_sha256": "5a2ab76328a70a939ab9ada31bb7603ce5acb45d6a0c2d2a18783524f8bb8e47",
+  "frozen_F0_forecast_sha256": "c91583954fbf3e9d388b08d82fc8e67c9a12e3684d22e38a9f1db7ce73b65ac0",
+  "selected_F1_forecast_sha256": "ed198712edfbaddbd0f5d620a6f4dd5f976a49034836ad2b45bc6254a549de9a",
+  "required_artifacts_present": true,
+  "missing_required_artifacts": [],
+  "required_artifact_count": 36,
+  "oracle_label": "DIAGNOSTIC_ONLY / FUTURE_LEAKAGE_BY_DESIGN",
+  "mathematical_review": "PENDING_XXT_PHASE_B",
+  "notes": [
+    "Nov-Dec is a pre-designated winter evaluation window, not an untouched holdout.",
+    "Exact frozen-runner re-adjudication provenance nuance is disclosed in docs/FINAL_TECHNICAL_SUMMARY.md and FYQ_TO_XXT_REVIEW_REQUEST.md."
+  ]
+}
