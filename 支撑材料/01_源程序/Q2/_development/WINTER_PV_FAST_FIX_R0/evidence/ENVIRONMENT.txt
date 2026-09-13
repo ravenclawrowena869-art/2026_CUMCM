@@ -1,0 +1,14 @@
+captured_utc=2026-09-13T05:27:20Z
+python=Python 3.13.5
+platform=Linux-6.18.44-x86_64-with-glibc2.41
+numpy=2.3.5
+pandas=2.2.3
+scipy=1.17.0
+pytest=9.0.2
+
+FINAL_SEAL_PYTHON=3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]
+FINAL_SEAL_PLATFORM=Linux-6.18.44-x86_64-with-glibc2.41
+FINAL_numpy=2.3.5
+FINAL_pandas=2.2.3
+FINAL_scipy=1.17.0
+FINAL_pytest=9.0.2
