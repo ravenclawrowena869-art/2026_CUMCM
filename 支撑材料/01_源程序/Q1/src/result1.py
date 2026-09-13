@@ -1,4 +1,3 @@
-"""Ordinal official result1 writer and disk-reopened independent readback."""
 import argparse
 import csv
 from hashlib import sha256
