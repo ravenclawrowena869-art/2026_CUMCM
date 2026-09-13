@@ -1,0 +1,10 @@
+{
+  "preflight_status": "PASS_TEST_ONLY",
+  "formal_result_ready": false,
+  "formal_blockers": ["Q4_COMMON_CONTRACT_PENDING_XXT_LOCK", "FINAL_Q2_ARTIFACT_HASH_PENDING_CONTROLLER_APPROVAL"],
+  "future_leakage_count": 0,
+  "price_rows": 2,
+  "upstream_rows": 2,
+  "readback": {"pass": true, "sheet_names": ["计划购电量", "执行明细"], "row_counts": {"计划购电量": 2, "执行明细": 2}, "columns_ok": true},
+  "note": "Repository evidence omits the binary TEST_ONLY workbook; its local delivery SHA is recorded separately."
+}

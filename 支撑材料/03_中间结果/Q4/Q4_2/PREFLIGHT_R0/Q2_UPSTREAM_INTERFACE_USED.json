@@ -1,0 +1,8 @@
+{
+  "formal": false,
+  "status": "TEST_ONLY_MOCK_INTERFACE",
+  "canonical_fields": ["date","slot","decision_time","q_active_kWh","charge_ref_kWh","discharge_ref_kWh","SOC_start_kWh","SOC_end_kWh","emergency_kWh","upstream_version","upstream_sha256"],
+  "mock_version": "Q2_TEST_ONLY",
+  "mock_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "formal_required": "Controller-approved final Q2 artifact SHA after q closure and current Mathematical PASS"
+}

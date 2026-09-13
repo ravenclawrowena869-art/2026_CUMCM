@@ -1,0 +1,9 @@
+{
+  "evidence_class": "TEST_ONLY_SYNTHETIC_ACCOUNTING_DRY_RUN",
+  "formal": false,
+  "normal_cost_cny": 2.7,
+  "emergency_cost_cny": 1.5,
+  "total_cost_cny": 4.2,
+  "source": "synthetic fixture; multipliers come only from TEST_ONLY mock contract",
+  "formal_accounting_status": "BLOCKED_PENDING_XXT_LOCKED_SETTLEMENT_CONTRACT"
+}

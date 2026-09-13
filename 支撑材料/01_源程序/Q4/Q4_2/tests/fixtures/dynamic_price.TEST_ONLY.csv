@@ -1,0 +1,3 @@
+target_ts,slot,price_yuan_per_kWh,known_at,source,provenance_sha256
+2025-02-01 00:10:00,1,0.5,2025-02-01 00:00:00,mock,aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+2025-02-01 00:20:00,2,0.6,2025-02-01 00:00:00,mock,aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa

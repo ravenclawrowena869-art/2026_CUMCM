@@ -1,0 +1,35 @@
+{
+  "contract_id": "Q4_COMMON_CONTRACT_TEST_ONLY",
+  "test_only": true,
+  "status": "TEST_ONLY_MOCK",
+  "time": {
+    "slot_minutes": 10,
+    "slots_per_day": 2,
+    "time_mapping": "C_R1_RIGHT_ENDPOINT_ORDINAL_EXPORT"
+  },
+  "storage": {
+    "soc_min_kWh": 1.0,
+    "soc_max_kWh": 10.0,
+    "slot_energy_max_kWh": 3.0,
+    "eta_c": 0.9,
+    "eta_d": 0.9,
+    "recursion": "Q2_BUS_SIDE_R1",
+    "cross_day": "NO_DAILY_RESET"
+  },
+  "balance": {
+    "lhs": [["q_active_kWh", 1.0], ["emergency_kWh", 1.0], ["pv_kWh", 1.0], ["discharge_kWh", 1.0]],
+    "rhs": [["paid_unused_kWh", 1.0], ["load_kWh", 1.0], ["charge_kWh", 1.0], ["pv_curtail_kWh", 1.0]]
+  },
+  "settlement": {
+    "normal_multiplier": 1.0,
+    "emergency_multiplier": 5.0,
+    "selling_allowed": false
+  },
+  "writer": {
+    "official_mapping_locked": false,
+    "sheets": {
+      "计划购电量": ["date", "slot", "q_active_kWh", "price_yuan_per_kWh"],
+      "执行明细": ["date", "slot", "charge_kWh", "discharge_kWh", "soc_start_kWh", "soc_end_kWh", "emergency_kWh"]
+    }
+  }
+}

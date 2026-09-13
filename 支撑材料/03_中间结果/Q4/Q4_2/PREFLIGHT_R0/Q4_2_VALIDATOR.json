@@ -1,0 +1,8 @@
+{
+  "evidence_class": "TEST_ONLY_SYNTHETIC_VALIDATOR_DRY_RUN",
+  "formal": false,
+  "contract_id": "Q4_COMMON_CONTRACT_TEST_ONLY",
+  "result": {"pass": true, "energy_tolerance_kWh": 1e-06, "max_violation": 8.881784197001252e-16, "argmax_location": {"date": "2025-02-01", "slot": 2}, "max_balance_violation_kWh": 0.0, "max_soc_recursion_violation_kWh": 8.881784197001252e-16, "cross_slot_soc_discontinuity_max_kWh": 0.0, "soc_bound_violation_max_kWh": 0.0, "power_violation_max_kWh": 0.0, "export_violation_max_kWh": 0.0, "simultaneous_charge_discharge_max_kWh": 0.0, "normal_cost_cny": 2.7, "emergency_cost_cny": 1.5, "total_cost_cny": 4.2, "rows": 2},
+  "formal_result_ready": false,
+  "note": "This proves validator behavior on an explicit synthetic fixture only; it is not Q4-2 formal evidence."
+}
