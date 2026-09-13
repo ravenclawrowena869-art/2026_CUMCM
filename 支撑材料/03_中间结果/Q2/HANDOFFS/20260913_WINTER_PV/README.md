@@ -1,49 +1,51 @@
-# Q2 Winter-PV Fast-Fix Handoff — 2026-09-13
+# Q2 Winter-PV Handoff — 2026-09-13
 
-## Full FYQ Delivery byte source
+This directory is the repository-visible handoff for the FYQ Winter-PV Fast-Fix and XXT Phase-B review.
 
-File name:
-`CUMCM2026_C_Q2_FYQ_WINTER_PV_FAST_FIX_R0_DELIVERY.zip`
+## FYQ complete Delivery identity
 
-SHA256:
-`011f1d0d64e4aa578a1c5f377b26ac5585d9317f807f9ffe89132b462d48ea36`
+- File: `CUMCM2026_C_Q2_FYQ_WINTER_PV_FAST_FIX_R0_DELIVERY.zip`
+- Exact size: `104106491 bytes`
+- SHA256: `011f1d0d64e4aa578a1c5f377b26ac5585d9317f807f9ffe89132b462d48ea36`
+- Exact bytes are retained in the shared ChatGPT Project/Library under that exact filename.
 
-Size:
-`104106491 bytes`
+The 104 MB Delivery itself is not duplicated as a normal Git blob. Fresh Controller verification is recorded in `FYQ_FULL_DELIVERY_VALIDATION.md`:
 
-The exact full Delivery is stored in the shared ChatGPT Project/Library under `/数模/CUMCM2026_C_Q2_FYQ_WINTER_PV_FAST_FIX_R0_DELIVERY.zip` and can be retrieved in another Project window by exact filename through Project Files.
+- ZIP CRC: PASS
+- entries: 368
+- internal SHA256SUMS: 367/367 PASS
+- bad/missing: 0/0
 
-The 104 MB byte archive itself is intentionally not committed as a normal Git blob in this handoff branch. It sits very close to GitHub's single-file hard limit and the current GitHub connector has no direct local-file upload parameter for a binary of this size. Do not substitute another archive: verify the SHA above.
+## XXT Phase-B handoff
 
-## XXT Phase B result archived in this branch
+The original review return is committed here as:
 
 `CUMCM2026_C_Q2_XXT_WINTER_PV_PHASE_B_RETURN_R0.zip`
 
 Outer SHA256:
+
 `be31c7b03f1c65c2a837363b5ebcbf3a1e2d6a03046a9ddfb5e9c9f3070c453d`
 
-Internal SHA256SUMS: PASS (7/7 payloads)
-ZIP CRC: PASS
+Verdict:
 
-Controller verdict:
-`PROMOTE_P3_AMPCORR_TO_M3_REPLAY`
+- `PROMOTE_P3_AMPCORR_TO_M3_REPLAY`
+- Mathematical Review: `PASS WITH LIMITATION`
+- forecast layer: `L2 + P3_AMPCORR_K7`
+- selected K: `7`
 
-Mathematical Review:
-`PASS WITH LIMITATION`
+See `XXT_PHASE_B_HANDOFF.md` for scope and limitations.
 
-Selected forecast layer:
-`L2 + P3_AMPCORR_K7`
+## Source-code archive
 
-Selected K:
-`7`
+The code-level development snapshot is under:
 
-## Scope boundary
+`支撑材料/01_源程序/Q2/_development/WINTER_PV_FAST_FIX_R0/`
 
-This verdict authorizes one formal M3/SP replay with only the forecast layer replaced by F1_K7. It does not authorize Q2 Freeze, does not revalidate q=0.80, and does not make Oracle deployable.
+It contains the formal Fast-Fix implementation chain, exact-runner adapter/workers, configuration, tests, runbook and frozen-runner reconstruction/provenance. This development directory is not the final competition submission layout; final Q2 code will be consolidated into `支撑材料/01_源程序/Q2/` after q closure and the formal M3/SP replay.
 
-## Next action
+## Current controller state
 
-1. Freeze F1_K7 artifact and SHA `ed198712edfbaddbd0f5d620a6f4dd5f976a49034836ad2b45bc6254a549de9a`.
-2. Run one M3/SP replay with all other contracts unchanged.
-3. Run the independent full validator and same-accounting F0/F1 comparison.
-4. Return to Controller/XXT before Q2 re-freeze.
+- forecast-layer development: complete enough for authorized M3 promotion;
+- q=0.80: **not revalidated** by Phase B;
+- Q2 Freeze: false;
+- next: fast F1 q closure → one selected M3/SP annual replay → independent validator → final result2/code consolidation.
