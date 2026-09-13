@@ -21,6 +21,8 @@ def write_result_workbook(
     formal: bool,
 ) -> dict[str, Any]:
     if formal:
+        if bool(contract.raw.get("test_only", False)):
+            raise OutputMappingError("test-only contract cannot authorize formal result4-2")
         if not contract.is_locked_by_xxt:
             raise OutputMappingError("formal writer requires XXT-locked Q4 common contract")
         if not contract.writer_mapping_locked:
