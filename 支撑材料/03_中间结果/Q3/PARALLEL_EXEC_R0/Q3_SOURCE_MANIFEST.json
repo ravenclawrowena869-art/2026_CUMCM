@@ -1,0 +1,31 @@
+{
+  "module": "Q3-FORMAL-R1",
+  "manifest_scope": "INTERIM_CONTRACT_INDEPENDENT_EXECUTION",
+  "task_zip_sha256": "51a18ba89f2a0f50b6384368dbaef76efd74b1c6cc8b492f5ec27734dae8b35f",
+  "repository": "ravenclawrowena869-art/2026_CUMCM",
+  "frozen_base": {
+    "commit": "704d67f84d56428eb48892784579ecba6aaeb53b",
+    "verified": true
+  },
+  "canonical_workflow": {
+    "repository": "ravenclawrowena869-art/cumcm-rigorous-workflow",
+    "main_commit": "ceb5b9c09046ab2189be83b5fa2871475467179b",
+    "SKILL.md_blob": "c94f68156abaa95936f94679b6ca9094a3488855",
+    "SHARED_CORE.md_blob": "054a4d72af89796a79b68839cfebfa9b50938e80",
+    "FYQ_TECHNICAL_ORCHESTRATOR.md_blob": "f9d57c80381af9699f8d4c228fad16117eab3d20",
+    "MODEL_EVIDENCE_GATE_blob": "7afbf3b13d5996e6aa289534e1fb0a712b4a685f",
+    "REPOSITORY_WRITE_GATE_blob": "692e78c39777dfc0d19e2e48cd24d82d1d337bad"
+  },
+  "latest_visible_q3_authority": {
+    "branch": "xxt/q234-feb1-soc-assumption-20260913",
+    "Q3_CURRENT_STATUS_R1_blob": "37d83323fbe05a964f76a19e5c726225dc566ab4",
+    "Q3_CURRENT_STATUS_R0_blob": "18ae0ac8333137727410b1118ab1e30049444d56",
+    "XXT_Q3_MATH_CONTRACT_PREFLIGHT_R2_blob": "19093a5762f05c1b8b10640e0ade614eba9e6096",
+    "XXT_Q3_AUTHORITY_DECISION_REVIEW_R2_blob": "26d2515dd116e5200d9551b4f471420a72e46155",
+    "XXT_Q234_FEB1_INITIAL_SOC_ASSUMPTION_R0_blob": "109178add8d66e768d107486c64ee49dd873169e",
+    "Q3_CONTRACT_LOCKED_FOR_FYQ_found": false
+  },
+  "formal_input_hashes": null,
+  "formal_result_hashes": null,
+  "reason_formal_hashes_absent": "Formal annual run is prohibited until Q3_CONTRACT_LOCKED_FOR_FYQ is available."
+}

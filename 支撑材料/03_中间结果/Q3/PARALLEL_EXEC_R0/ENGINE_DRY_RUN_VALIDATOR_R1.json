@@ -1,0 +1,20 @@
+{
+  "mode": "MOCK_DRY_RUN_ONLY",
+  "formal_guard": "PASS",
+  "validator": {
+    "pass_all": true,
+    "executed_slot_mutation_count": 0,
+    "commitment_delta_max_residual_kwh": 0.0,
+    "cost_identity_residual_yuan": 0.0,
+    "balance_max_residual_kwh": 0.0,
+    "balance_argmax_slot": null,
+    "soc_bound_max_violation_kwh": 0.0,
+    "storage_power_max_violation_kwh": 0.0,
+    "soc_recursion_max_residual_kwh": 0.0,
+    "simultaneous_charge_discharge_count": 0
+  },
+  "stage_ledger_rows": 2,
+  "forecast_slots_after_0600": 108,
+  "formal_metrics_generated": false,
+  "result3_generated": false
+}
