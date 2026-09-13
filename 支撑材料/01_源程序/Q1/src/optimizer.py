@@ -1,4 +1,3 @@
-"""720-variable continuous LP with a cost-preserving throughput second stage."""
 import math
 from time import perf_counter
 import numpy as np
