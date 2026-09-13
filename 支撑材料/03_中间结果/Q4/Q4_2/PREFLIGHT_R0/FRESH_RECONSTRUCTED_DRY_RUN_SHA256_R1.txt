@@ -1,0 +1,2 @@
+5ae7ddd7be67cc8650fff7c59e262bc909844b212a68290553d4a54057960f74  result4-2.TEST_ONLY_DRY_RUN.xlsx
+# Fresh reconstructed TEST_ONLY artifact generated during 2026-09-13 verification; non-formal and not a competition result.
