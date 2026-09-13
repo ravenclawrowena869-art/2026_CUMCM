@@ -1,4 +1,4 @@
-# Q4-2 Technical Summary R0
+# Q4-2 Technical Summary R1
 
 Block: `Q4-2-FORMAL-R1`  
 Base: `704d67f84d56428eb48892784579ecba6aaeb53b`  
@@ -19,12 +19,14 @@ Current state: `IMPLEMENTED_PRE_FORMAL / FORMAL_RESULT_BLOCKED`
 
 ## 真实验证证据
 
-- 本地 expanded regression suite：`17 passed`。
+- 2026-09-13 fresh reconstruction of current branch：`13 passed in 0.45s`，详见 `VERIFICATION_20260913_R1.md`。
 - TEST_ONLY dry-run：`PASS_TEST_ONLY`。
 - dry-run future leakage count：`0`。
 - dry-run writer/readback：PASS，两个测试 sheet 均 2 行。
 - synthetic validator：balance/SOC recursion/continuity 最大违反量均在 `1e-6 kWh` Gate 内。
 - failure-path tests 覆盖：缺 `known_at`、重复/缺失 slot、timestamp/slot 错位、bad SHA、future leakage、SOC/export violation、oracle formal write、unlocked contract、mock contract formal leakage。
+
+此前 pre-formal 草稿中的 `17 passed` 属于旧执行记录，当前分支的 fresh verification 以 `13 passed in 0.45s` 为准。
 
 ## 当前明确未做
 
