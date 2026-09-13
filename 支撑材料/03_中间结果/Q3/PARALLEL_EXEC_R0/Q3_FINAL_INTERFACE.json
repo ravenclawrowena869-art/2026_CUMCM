@@ -1,0 +1,40 @@
+{
+  "interface_id": "Q3_FINAL_INTERFACE_PARALLEL_EXEC_R0_INTERIM",
+  "module": "Q3-FORMAL-R1",
+  "state": "BLOCKED_PENDING_Q3_CONTRACT_LOCKED_FOR_FYQ",
+  "formal_result_available": false,
+  "q3_frozen": false,
+  "formal_metrics": null,
+  "result3": null,
+  "repository": "ravenclawrowena869-art/2026_CUMCM",
+  "frozen_base_commit": "704d67f84d56428eb48892784579ecba6aaeb53b",
+  "execution_branch": "fyq/q3-formal-r1",
+  "slot_mapping": "C_R1_RIGHT_ENDPOINT_ORDINAL_EXPORT",
+  "decision_stages": ["00:00", "06:00", "12:00", "18:00"],
+  "stage_rule": "slots with right_endpoint <= decision_time are executed and immutable; only strictly future slots may be revised",
+  "plan_field_semantics": "00:00 normal-purchase commitment q0_t",
+  "adjusted_field_semantics": "FINAL_ACTIVE_COMMITMENT_PER_SLOT once formal contract is locked and validated",
+  "preflight_binding": {
+    "contract_id": "XXT_Q3_MATH_CONTRACT_PREFLIGHT_R2",
+    "locked_for_fyq": false,
+    "adjustment_reference": "PREVIOUS_ACTIVE_COMMITMENT",
+    "settlement_price_semantics": "DELIVERY_SLOT_PRICE",
+    "forecast_transform": "PV_HOURLY_LINEAR_CAUSAL_BOUNDARY_V1",
+    "initial_soc_kwh": 6000.0,
+    "initial_soc_nature": "REASONABLE_MODELING_ASSUMPTION"
+  },
+  "fail_closed": {
+    "formal_year_run": "BLOCKED",
+    "formal_accounting": "BLOCKED",
+    "formal_validator_pass": "BLOCKED",
+    "result3_writer": "BLOCKED"
+  },
+  "formal_unblock_requires": [
+    "hash-pinned Q3_CONTRACT_LOCKED_FOR_FYQ",
+    "official Attachment 1/2/3 bindings",
+    "formal controller/optimizer binding",
+    "official result3 workbook layout binding",
+    "independent formal replay PASS"
+  ],
+  "downstream_q4_consumer_rule": "Q4-3 must not consume this interim interface as a formal Q3 result."
+}
