@@ -1,0 +1,15 @@
+claim,evidence,allowed_wording,forbidden_overclaim,status
+储能方案相对无储能基线将日购电成本降低约26.90%,q1_metrics.json + q1_baseline_no_storage_long.csv + Stage-2 schedule,在本文无储能基线定义下，Stage-2调度将日购电成本由48052.05元降至35126.95元，下降约26.90%。,不得写成对所有可能基线/市场机制均节省26.90%；不得把35126.95说成Stage-1 exact全精度值。,ALLOWED
+Stage-1 exact optimum为35126.948589...元,Freeze Manifest + q1_metrics.json,第一阶段连续LP的精确最优购电费用为35126.948589元。,不得把Stage-2 exported schedule cost与Stage-1 exact optimum混为同一全精度数值。,ALLOWED
+Stage-2正式导出费用为35126.948689...元,Freeze Manifest + q1_metrics.json,第二阶段在C*+1e-4元容差内得到的正式导出调度费用为35126.948689元。,不得称第二阶段费用本身为无容差的exact optimum。,ALLOWED
+储能调度呈现低价时段充电、高价时段放电的跨时段转移,q1_schedule_long.csv + price_yuan_per_kwh,冻结调度在部分低价时段增加购电并充电，在部分高价时段放电，从而实现跨时段能量转移。,不得仅凭图形写成所有低价时段都充电/所有高价时段都放电；不得升级为因果市场行为结论。,ALLOWED_WITH_SCOPE
+优化方案降低了外网购电峰值/实现了削峰,baseline vs optimized max grid power,不允许作为Q1当前结果结论。,优化后最大购电功率约8458.83 kW，高于无储能基线约4956.50 kW；不得声称外网购电峰值下降。,FORBIDDEN
+优化方案降低了全天外网购电量,baseline/optimized schedule sums,无储能基线全天购电量约61789.94 kWh，正式调度约59482.70 kWh。,不得把购电量下降完全归因于峰谷套利；同时存在提高光伏利用的机制。,ALLOWED
+正式调度实现零弃光,q1_metrics.json / q1_schedule_long.csv,在Q1正式冻结调度及其口径下，优化方案的curtailment总量为0 kWh。,不得推广到全年/Q2-Q4；不得写成一般意义上光伏可100%消纳。,ALLOWED_WITH_SCOPE
+无储能基线存在6247.96 kWh光伏富余弃用,q1_baseline_no_storage_long.csv,在无储能、禁止售电的基线定义下，光伏弃用量约6247.96 kWh。,不得称其为系统必然弃光；这是特定基线规则下的结果。,ALLOWED_WITH_SCOPE
+SOC始终处于1200–10800 kWh且首末6000 kWh,q1_constraint_report.json + q1_schedule_long.csv,"独立replay显示SOC全程位于[1200,10800] kWh，且0:00与24:00均为6000 kWh。",不得仅凭图中SOC线视觉上未越界就替代constraint replay证据。,ALLOWED
+没有同时充放电,q1_metrics.json + validator + MILP structural validation,正式Stage-2调度中同时充放电槽数为0。,不得写成连续LP的数学结构天然禁止同时充放电。,ALLOWED_WITH_SCOPE
+LP足以作为正式模型,LP/MILP structural validation,在本题冻结数据与约束下，LP与mutex MILP的Stage-1目标一致且LP解无同时充放电，因此保留结构更简洁的LP。,不得写MILP显著劣于/优于LP；不得推广到其他问题。,ALLOWED_WITH_SCOPE
+epsilon_cost=1e-4具有确认性稳健性,epsilon sensitivity evidence,在1e-6至1e-2元的确认性敏感性范围内，核心结论未发生结构性反转。,不得称1e-4为全局最优epsilon或求解器自身误差。,ALLOWED_WITH_SCOPE
+eta_c=eta_d=0.9是唯一正确效率解释,efficiency semantics sensitivity,本文采用eta_c=eta_d=0.9作为正式单程效率解释，并报告sqrt(0.9)替代语义会改变数值结果。,不得声称0.9/0.9是题意唯一可能解释；不得隐藏约3.77%的替代语义差异。,FORBIDDEN_AS_UNIQUE_CLAIM
+图中PV曲线代表实际光伏出力,Attachment1 column semantics / Freeze Handoff,Q1图中应标注为“光伏预测功率”或等价措辞。,不得把附件1的光伏预测功率标成actual PV并据此作实际出力结论。,FORBIDDEN
