@@ -30,7 +30,6 @@ def read_csv(path):
     return rows
 
 def portable_relative_path(root, relative):
-    """Resolve POSIX or legacy Windows relative manifest paths safely."""
     root=Path(root).resolve()
     normalized=str(relative).replace('\\','/')
     candidate=(root/Path(*normalized.split('/'))).resolve()
