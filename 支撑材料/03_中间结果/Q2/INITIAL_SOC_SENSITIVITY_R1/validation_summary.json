@@ -1,0 +1,52 @@
+{
+  "status": "PASS",
+  "baseline": "Q2_FINAL_FROZEN_R1 / Q80_P2 / initial SOC 6000 kWh",
+  "baseline_package_sha256": "d833565d01e1fd62a9014df624f3002afab5fd7b80c1bb936cb858be660a84e1",
+  "baseline_source_sha256": "5a2ab76328a70a939ab9ada31bb7603ce5acb45d6a0c2d2a18783524f8bb8e47",
+  "one_factor_integrity": {
+    "SOC_INIT_4000": {
+      "source_change": "line 20 only: E0_YEAR=6000.0 -> E0_YEAR=4000.0",
+      "source_sha256": "2abd33b3f6c4f4ba2081fb4e598c29ba33056ffd47375f2d6b88792d8d3d5582",
+      "frozen_inputs_match": true
+    },
+    "SOC_INIT_8000": {
+      "source_change": "line 20 only: E0_YEAR=6000.0 -> E0_YEAR=8000.0",
+      "source_sha256": "99e3a263ec2289208e960afbb59e1c7b0c8ae3d50a47c022c9d61c13408c86da",
+      "frozen_inputs_match": true
+    }
+  },
+  "output_hashes": {
+    "SOC_INIT_6000_slot_replay_sha256": "73fec2334918f56fcf281716396f9c1c99b6eb6606779fa10f5b053c43c4951f",
+    "SOC_INIT_4000_slot_replay_sha256": "26321401a7619d5d9092e1c703c1f8acb8193c822721724c318873bcd09b1b50",
+    "SOC_INIT_8000_slot_replay_sha256": "3c4d6bbab72de049cf6b7c7557d9fc1966d356d14271f9ef95e57b4c5dddcdc6"
+  },
+  "hard_checks": {
+    "coverage_334x144": true,
+    "initial_soc_identity": true,
+    "charge_discharge_bounds": true,
+    "no_simultaneous_charge_discharge": true,
+    "energy_balance": true,
+    "soc_recursion": true,
+    "soc_bounds": true,
+    "cross_day_continuity": true,
+    "s1_bounds": true,
+    "emergency_last": true,
+    "cost_independent_recompute": true,
+    "fallback_zero": true,
+    "free_bounded_terminal": true
+  },
+  "max_abs_balance_residual_kWh": 9.094947017729282e-13,
+  "max_soc_recursion_residual_kWh": 1.659827830735594e-11,
+  "trajectory_convergence": {
+    "SOC_INIT_4000": {
+      "first_permanently_matching_target_ts": "2025-02-01T13:50:00",
+      "from_feb2_on_max_abs_selected_field_diff": 0.0
+    },
+    "SOC_INIT_8000": {
+      "first_permanently_matching_target_ts": "2025-02-01T14:30:00",
+      "from_feb2_on_max_abs_selected_field_diff": 0.0
+    }
+  },
+  "paper_gate": "PASS_FOR_Q2_INITIAL_SOC_ROBUSTNESS_CLAIM",
+  "q3_q4_note": "Not automatically validated; use the same assumption but perform targeted verification before making a Q3/Q4 quantitative sensitivity claim."
+}
