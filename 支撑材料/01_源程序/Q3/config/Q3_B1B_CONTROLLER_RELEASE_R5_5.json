@@ -1,0 +1,52 @@
+{
+  "schema": "Q3_B1B_CONTROLLER_RELEASE_R5_5_V1",
+  "release_id": "Q3_B1B_FORMAL_RELEASE_R5_5",
+  "status": "RELEASED",
+  "authority": "Q3_MASTER_CONTROLLER_R5_5",
+  "formal_b1b_primary_authorized": true,
+  "formal_sensitivity_14d_authorized": true,
+  "winner_declaration_authorized": false,
+  "q3_freeze_authorized": false,
+  "primary_strategy_id": "B1B_PRIMARY_L1_MAE_W28_H14",
+  "preregistration_sha256": "7d6644a56c1f092b3606eaa8ad86056accfe4cbc316d6f6b5e60e88979e4cd9c",
+  "runtime_bindings": {
+    "pv_vintages_attachment3_sha256": "8a61b06c52bd0d639a1cc37c61a7d9f5b75edcbca718f64c1bd3498ec9f9d843",
+    "actual_attachment2_sha256": "2e95fd446bfafa0d8c59577b5c2e2ea8b3f1def20dde54a3062556f4da9b4c72",
+    "tariff_attachment1_sha256": "66b87134f5ecccd68184d3539bb1293ef039f9e0fdd955a589b9bfa7f227c377",
+    "frozen_load_sha256": "8ceb83944d445eeef6316a98769f5421bb1820385dbd62d7f1d3ceab856eb790",
+    "formal_lp_sha256": "66a4c932e811ebaa0d7f6ffd0cd1d4e242b632417075ab20fa8a2127c1869a44",
+    "engine_baseline_sha256": "85cff7d8ed727a82cfc1b77a45172dbdfa503395331aa9bec733254a0ca876dc",
+    "ledger_sha256": "b1eabea97720be5bcfa40b5921fd2a1dfd921d67adce12dfa0fe49dc790571f1",
+    "validator_sha256": "cb08db611750778dbde3398e3a17ad7af9e91d76959b8b5cbc69ee4aba1c4096",
+    "annual_validator_sha256": "18211bcd13ff87921c60038ecf443007d5a20557934ebaac3819919366e5fb59",
+    "formal334_baseline_delivery_sha256": "01a3beec9b922e9482f676a3a222ada2a055b091a061bef9d6455ae7e163651a"
+  },
+  "controller_clarifications_before_economic_results": {
+    "S3_second_stage_optimum_tolerance_kwh": 1e-09,
+    "bootstrap": {
+      "type": "NONCIRCULAR_MOVING_BLOCK",
+      "replicates": 10000,
+      "seed": 20260913,
+      "ci": "PERCENTILE_95",
+      "block_lengths_days": [7, 14]
+    },
+    "annual_cost_floor_formula": "max(1e-6,1e-10*abs(B1A annual cost))+max(1e-6,1e-10*abs(B1B annual cost))+clean_replay_delta_spread_if_available",
+    "annual_emergency_tolerance_formula": "max(1e-6,1e-10*abs(B1A emergency kWh))+max(1e-6,1e-10*abs(B1B emergency kWh))",
+    "date_cost_floor_formula": "max(1e-6,1e-10*abs(B1A date cost))+max(1e-6,1e-10*abs(B1B date cost))"
+  },
+  "coverage": {
+    "history_reconstruction_start": "2025-01-02",
+    "history_reason": "2025-01-01 stage-00 lacks prior legal 2024-12-31 18:00 boundary vintage; Jan2-Jan31 provides 30 valid days before Feb1",
+    "formal_start": "2025-02-01",
+    "formal_end": "2025-12-31",
+    "days": 334
+  },
+  "forbidden": [
+    "DAY_D_ACTUAL_IN_LAMBDA",
+    "POST_HOC_METHOD_SELECTION",
+    "CHANGING_SHARED_OPTIMIZER_OR_ACCOUNTING",
+    "DAILY_SOC_RESET",
+    "B1B_WINNER_DECLARATION_BEFORE_GATES",
+    "Q3_FREEZE_BEFORE_FINAL_ACCEPTANCE"
+  ]
+}
