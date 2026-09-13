@@ -1,4 +1,4 @@
-"""Lossless text serialization and portable file provenance."""
+
 import csv
 import json
 from hashlib import sha256
