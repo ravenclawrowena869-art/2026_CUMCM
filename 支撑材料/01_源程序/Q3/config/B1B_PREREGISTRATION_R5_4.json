@@ -5,7 +5,10 @@
   "trigger_basis": {
     "status": "A6_TRIGGERED",
     "source": "Q3_R5_3_FORMAL14_GATE",
-    "same_class_adverse_dates": ["2025-02-13", "2025-12-11"],
+    "same_class_adverse_dates": [
+      "2025-02-13",
+      "2025-12-11"
+    ],
     "causal_localization": "B0/B1A identical through slots 1-36; first divergence at slot 37 on adverse dates",
     "note": "Only B0/B1A screening evidence was used. No B1B economic output exists or was inspected."
   },
@@ -16,12 +19,29 @@
     "training_window_id": "TRAILING_28_VALID_DAYS",
     "window_size_valid_days": 28,
     "min_history_valid_days": 14,
-    "stages": [6, 12, 18],
+    "stages": [
+      6,
+      12,
+      18
+    ],
     "stage_specific_scalar_lambda": true,
     "lambda_timing": "ALL_STAGE_LAMBDAS_FOR_DAY_D_FIXED_AT_DAY_D_00:00",
     "lambda_formula": "lambda = clip(e_ref / (e_new + e_ref), 0, 1)",
     "denominator_zero_threshold": 1e-12,
-    "target_slots": {"6": [37, 144], "12": [73, 144], "18": [109, 144]},
+    "target_slots": {
+      "6": [
+        37,
+        144
+      ],
+      "12": [
+        73,
+        144
+      ],
+      "18": [
+        109,
+        144
+      ]
+    },
     "historical_valid_day_rule": "For stage s, scan dates h<d backward and collect the most recent dates with complete actual PV, legal PV_new(h,s), and causally reconstructible PV_ref(h,s) over the full target slot set T_s. Stop after 28 valid dates. Do not substitute incomplete dates.",
     "per_day_loss_rule": "For each valid historical date h and stage s, compute the simple arithmetic mean absolute error over every slot in T_s separately for PV_new and PV_ref.",
     "window_aggregation_rule": "e_new and e_ref are simple arithmetic means of the corresponding per-day MAE values across the selected valid historical dates; each valid date has equal weight.",
@@ -33,30 +53,114 @@
     },
     "historical_pv_ref_reconstruction": "Reconstruct each variant chronologically from the first day with complete required sources. For each historical date h, compute that date's lambdas using only dates <h, then build its 06/12/18 effective paths causally. After actual PV for h is complete, record the stage-specific PV_new/PV_ref losses for use by future dates. Never reconstruct historical PV_ref using future lambdas or current-day actuals.",
     "known_at_rule": "All lambda inputs for date d must come from completed dates <=d-1. The three lambda values for date d must be computed and hash-recorded by d 00:00; day-d actual PV is forbidden.",
-    "insufficient_history_fallback": {"condition": "valid_history_count < 14", "lambda": 1.0, "status": "FALLBACK_TO_B1A_INSUFFICIENT_HISTORY", "allowed": true},
-    "zero_denominator_fallback": {"condition": "e_new + e_ref <= 1e-12", "lambda": 1.0, "status": "FALLBACK_TO_B1A_DEGENERATE_ZERO_LOSS", "allowed": true},
+    "insufficient_history_fallback": {
+      "condition": "valid_history_count < 14",
+      "lambda": 1.0,
+      "status": "FALLBACK_TO_B1A_INSUFFICIENT_HISTORY",
+      "allowed": true
+    },
+    "zero_denominator_fallback": {
+      "condition": "e_new + e_ref <= 1e-12",
+      "lambda": 1.0,
+      "status": "FALLBACK_TO_B1A_DEGENERATE_ZERO_LOSS",
+      "allowed": true
+    },
     "provenance_failure_action": "FAIL_CLOSED",
     "missing_vintage_or_actual_action": "FAIL_CLOSED",
-    "lambda_bounds": [0.0, 1.0],
+    "lambda_bounds": [
+      0.0,
+      1.0
+    ],
     "tie_or_equal_error_behavior": "If e_new == e_ref > 0, lambda=0.5 by the frozen inverse-error formula; do not override to 1 post hoc.",
-    "required_lambda_ledger_fields": ["date", "stage", "lambda", "e_new", "e_ref", "valid_history_count", "training_start_date", "training_end_date", "training_cutoff_date", "window_id", "method_id", "loss_id", "fallback_status", "history_source_hash", "pv_new_source_hash", "pv_ref_reconstruction_hash"]
+    "required_lambda_ledger_fields": [
+      "date",
+      "stage",
+      "lambda",
+      "e_new",
+      "e_ref",
+      "valid_history_count",
+      "training_start_date",
+      "training_end_date",
+      "training_cutoff_date",
+      "window_id",
+      "method_id",
+      "loss_id",
+      "fallback_status",
+      "history_source_hash",
+      "pv_new_source_hash",
+      "pv_ref_reconstruction_hash"
+    ]
   },
   "fairness_contract": {
     "only_allowed_model_difference_vs_B1A": "PV_VINTAGE_BLENDING_POLICY",
-    "shared": ["Q2 frozen load forecast and hashes", "A7 state/terminal contract", "prices and all accounting/emergency rules", "A4 PV transform", "storage execution", "actual replay", "formal LP and tie-break", "initial SOC and cross-day state", "validator/tolerances", "334-day coverage"],
+    "shared": [
+      "Q2 frozen load forecast and hashes",
+      "A7 state/terminal contract",
+      "prices and all accounting/emergency rules",
+      "A4 PV transform",
+      "storage execution",
+      "actual replay",
+      "formal LP and tie-break",
+      "initial SOC and cross-day state",
+      "validator/tolerances",
+      "334-day coverage"
+    ],
     "B1A_policy": "FULL_TRUST_NEW_LEGAL_VINTAGE",
     "B1B_policy": "BLENDED_TRUST_WITH_FROZEN_CAUSAL_LAMBDA"
   },
   "sensitivity_variants": [
-    {"id": "S1", "strategy_id": "B1B_S1_L1_MAE_W14_H14", "method": "L1_INVERSE_OOS_ERROR", "loss": "MAE", "window_valid_days": 14, "min_history": 14, "role": "WINDOW_SENSITIVITY"},
-    {"id": "S2", "strategy_id": "B1B_S2_L1_MAE_W56_H14", "method": "L1_INVERSE_OOS_ERROR", "loss": "MAE", "window_valid_days": 56, "min_history": 14, "role": "WINDOW_SENSITIVITY"},
-    {"id": "S3", "strategy_id": "B1B_S3_L2_MAE_W28_H14", "method": "L2_CONSTRAINED_OOS_BLEND", "loss": "MAE", "window_valid_days": 28, "min_history": 14, "role": "METHOD_SENSITIVITY", "deterministic_tie_break": "two-stage LP: minimize mean absolute error; then among solutions within primary optimum numerical tolerance choose the smallest lambda"},
-    {"id": "S4", "strategy_id": "B1B_S4_L1_RMSE_W28_H14", "method": "L1_INVERSE_OOS_ERROR", "loss": "RMSE", "window_valid_days": 28, "min_history": 14, "role": "LOSS_SENSITIVITY"}
+    {
+      "id": "S1",
+      "strategy_id": "B1B_S1_L1_MAE_W14_H14",
+      "method": "L1_INVERSE_OOS_ERROR",
+      "loss": "MAE",
+      "window_valid_days": 14,
+      "min_history": 14,
+      "role": "WINDOW_SENSITIVITY"
+    },
+    {
+      "id": "S2",
+      "strategy_id": "B1B_S2_L1_MAE_W56_H14",
+      "method": "L1_INVERSE_OOS_ERROR",
+      "loss": "MAE",
+      "window_valid_days": 56,
+      "min_history": 14,
+      "role": "WINDOW_SENSITIVITY"
+    },
+    {
+      "id": "S3",
+      "strategy_id": "B1B_S3_L2_MAE_W28_H14",
+      "method": "L2_CONSTRAINED_OOS_BLEND",
+      "loss": "MAE",
+      "window_valid_days": 28,
+      "min_history": 14,
+      "role": "METHOD_SENSITIVITY",
+      "deterministic_tie_break": "two-stage LP: minimize mean absolute error; then among solutions within primary optimum numerical tolerance choose the smallest lambda"
+    },
+    {
+      "id": "S4",
+      "strategy_id": "B1B_S4_L1_RMSE_W28_H14",
+      "method": "L1_INVERSE_OOS_ERROR",
+      "loss": "RMSE",
+      "window_valid_days": 28,
+      "min_history": 14,
+      "role": "LOSS_SENSITIVITY"
+    }
   ],
   "sensitivity_reconstruction_rule": "Each sensitivity variant reconstructs its own historical effective PV_ref path causally using that variant's own past lambdas. It must not borrow the primary variant's reconstructed ref path.",
   "evaluation_plan": {
     "primary_scope": "334 consecutive days, same formal annual coverage as B0/B1A",
-    "primary_reports": ["paired annual/daily total cost vs B1A", "emergency kWh", "lambda distribution and fallback counts", "monthly breakdown", "trigger-date mitigation", "7-day block bootstrap", "14-day block bootstrap", "hard validator report", "runtime"],
+    "primary_reports": [
+      "paired annual/daily total cost vs B1A",
+      "emergency kWh",
+      "lambda distribution and fallback counts",
+      "monthly breakdown",
+      "trigger-date mitigation",
+      "7-day block bootstrap",
+      "14-day block bootstrap",
+      "hard validator report",
+      "runtime"
+    ],
     "stage_ablation": "Pre-register removal of 18:00 update as the first ablation because remaining PV after 18:00 is known to be small; ablation changes only the stage set and must use the same B1B lambda machinery on remaining stages.",
     "sensitivity_scope": "Run S1-S4 on the frozen cost-blind 14-day registry with causal history reconstructed from prior completed dates; expand a sensitivity to full 334 days only if Controller requests follow-up for an observed directional conflict."
   },
@@ -69,7 +173,17 @@
     "sensitivity_gate": "If any preregistered S1-S4 aggregate 14-day paired cost is worse than B1A beyond its numerical floor, label B1B SENSITIVE/FRAGILE and do not promote it to the final mainline without an explicit new Controller justification. Sensitivity variants can never replace the primary by post-hoc selection.",
     "complexity_value_gate": "If primary lambdas are effectively 1 for almost all eligible stage-days and no economic improvement exceeds numerical floor, retain B1A as the simpler model."
   },
-  "claim_boundary": {"b1b_winner_declared": false, "b1b_economic_result_exists": false, "controller_release_required_before_run": true, "final_q3_freeze_authorized": false},
-  "runtime_input_binding_required": ["full-year legal PV vintage archive (00/06/12/18) and hash", "full-year actual PV archive and hash", "same full-year price/load/state inputs as the formal B0/B1A annual baseline", "frozen B1A solver/ledger/validator code hashes"],
+  "claim_boundary": {
+    "b1b_winner_declared": false,
+    "b1b_economic_result_exists": false,
+    "controller_release_required_before_run": true,
+    "final_q3_freeze_authorized": false
+  },
+  "runtime_input_binding_required": [
+    "full-year legal PV vintage archive (00/06/12/18) and hash",
+    "full-year actual PV archive and hash",
+    "same full-year price/load/state inputs as the formal B0/B1A annual baseline",
+    "frozen B1A solver/ledger/validator code hashes"
+  ],
   "source_hashes_file": "SOURCE_HASHES_R5_4.json"
 }
