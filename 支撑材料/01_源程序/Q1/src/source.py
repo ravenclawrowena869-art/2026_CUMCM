@@ -5,10 +5,9 @@ from pathlib import Path
 import re
 import openpyxl
 
-REFERENCE_DATE = '2000-01-01'  # Synthetic coordinate, not an official Q1 date.
+REFERENCE_DATE = '2000-01-01'
 
 def source_workbook(root):
-    """Locate the single supplied source workbook without re-encoding its name."""
     files=[p for p in (Path(root)/'source').glob('*.xlsx') if p.name!='result1_official.xlsx']
     if len(files)!=1:
         raise ValueError('Expected exactly one source workbook')
