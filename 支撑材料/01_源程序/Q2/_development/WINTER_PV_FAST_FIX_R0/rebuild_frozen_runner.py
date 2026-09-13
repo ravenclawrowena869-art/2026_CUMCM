@@ -6,7 +6,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 PART_DIR = ROOT / "frozen_runner_chunks"
-OUT_DIR = ROOT / "frozen_runner"
+OUT_DIR = ROOT / "authority_snapshot" / "FROZEN_Q2_CURRENT"
 OUT_FILE = OUT_DIR / "run_q80_year.py"
 EXPECTED_SHA256 = "5a2ab76328a70a939ab9ada31bb7603ce5acb45d6a0c2d2a18783524f8bb8e47"
 PART_SHA256 = {
