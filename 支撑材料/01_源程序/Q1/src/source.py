@@ -1,4 +1,3 @@
-"""Strict, read-only attachment parser. Template display labels never enter here."""
 from datetime import time
 from hashlib import sha256
 import math
