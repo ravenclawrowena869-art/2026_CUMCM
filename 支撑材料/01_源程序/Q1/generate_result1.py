@@ -89,7 +89,7 @@ def solve_q1(price: np.ndarray, load: np.ndarray, pv: np.ndarray):
         aeq.append(row)
         beq.append(rhs)
 
-    # Q1 terminal SOC equality.
+    # 终端SOC约束
     row = np.zeros(n)
     row[4 * T + T - 1] = 1.0
     aeq.append(row)
@@ -105,12 +105,12 @@ def solve_q1(price: np.ndarray, load: np.ndarray, pv: np.ndarray):
     bounds.extend([(0.0, float(pv[t])) for t in range(T)])  # curtail
     bounds.extend([(E_MIN, E_MAX)] * T)                # SOC
 
-    # Stage 1: exact minimum purchase cost.
+    # 第一阶段：最小化购电成本
     r1 = linprog(c1, A_eq=aeq, b_eq=beq, bounds=bounds, method="highs")
     if not r1.success:
         raise RuntimeError(f"Stage 1 failed: {r1.message}")
 
-    # Stage 2: within C* + 1e-4 CNY, minimize storage throughput.
+    # 第二阶段：在最优成本附近减少充放电量
     c2 = np.zeros(n)
     c2[C] = 1.0
     c2[D] = 1.0
@@ -156,7 +156,6 @@ def solve_q1(price: np.ndarray, load: np.ndarray, pv: np.ndarray):
         "discharge_4h_kWh": discharge_4h.tolist(),
     }
 
-    
     if np.max(np.abs(balance_residual)) > 1e-6:
         raise AssertionError("energy-balance replay failed")
     if np.max(np.abs(soc_residual)) > 1e-6:
@@ -185,7 +184,6 @@ def write_result1(template: Path, output: Path, g, charge_4h, discharge_4h):
     plan = wb.worksheets.get_item("计划购电量")
     storage = wb.worksheets.get_item("充放电量")
 
-    # Official writer contract: canonical slot t -> official template position t.
     plan.get_range("B2:B145").values = [[float(v)] for v in g]
     storage.get_range("B2:B7").values = [[float(v)] for v in charge_4h]
     storage.get_range("C2:C7").values = [[float(v)] for v in discharge_4h]
