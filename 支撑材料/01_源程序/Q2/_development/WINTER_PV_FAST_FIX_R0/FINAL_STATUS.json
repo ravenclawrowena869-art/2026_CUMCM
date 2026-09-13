@@ -1,0 +1,18 @@
+{
+  "task_id": "CUMCM2026_C_Q2_FYQ_WINTER_PV_FAST_FIX_R0",
+  "decision": "P3_AMPCORR_TECHNICAL_CANDIDATE_READY_FOR_XXT",
+  "selected_model": "L2 + P3_AMPCORR_K7",
+  "selected_K": 7,
+  "technical_pass": true,
+  "evidence_sufficiency": "PASS_FOR_XXT_REVIEW_WITH_DISCLOSED_PROVENANCE_LIMITATION",
+  "mathematical_pass": "PENDING_XXT_PHASE_B",
+  "q2_freeze": false,
+  "overwrite_current_P3": false,
+  "M3_replay_authorized": false,
+  "frozen_runner_sha256": "5a2ab76328a70a939ab9ada31bb7603ce5acb45d6a0c2d2a18783524f8bb8e47",
+  "F1_forecast_sha256": "ed198712edfbaddbd0f5d620a6f4dd5f976a49034836ad2b45bc6254a549de9a",
+  "final_independent_verification": "PASS",
+  "promotion_gate": "PROMOTION_PASS",
+  "full_year_confirmation": "PASS_FOR_XXT_REVIEW",
+  "oracle_boundary": "DIAGNOSTIC_ONLY / FUTURE_LEAKAGE_BY_DESIGN"
+}
