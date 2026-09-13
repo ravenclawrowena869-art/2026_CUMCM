@@ -8,7 +8,6 @@ OPTIONS = {'primal_feasibility_tolerance':1e-9,'dual_feasibility_tolerance':1e-9
            'presolve':True}
 
 def _certificate(result, c, aeq, beq, aub, bub, bounds):
-    """Numerical LP KKT evidence in addition to independent physical replay."""
     le=np.array([b[0] for b in bounds],float)
     ue=np.array([b[1] if b[1] is not None else np.inf for b in bounds],float)
     yl=result.lower.marginals;yu=result.upper.marginals;y=result.eqlin.marginals
@@ -26,7 +25,6 @@ def _certificate(result, c, aeq, beq, aub, bub, bounds):
             'dual_sign_max_violation':sign,'complementarity_max_abs':float(max(comp))}
 
 def _schedule(rows, vector, eta_c, eta_d):
-    # Only negative floating-point noise is clipped; positive actions are retained.
     x=np.array(vector,copy=True)
     noise=(x<0)&(x>=-1e-9)
     x[noise]=0.
@@ -66,7 +64,7 @@ def solve(rows, eta_c=0.9, eta_d=0.9):
     if not one.success:
         raise RuntimeError(f'STOP_STAGE1: {one.status} {one.message}')
     cstar=float(one.fun)
-    epsilon=max(1e-4,1e-9*abs(cstar))  # Authority R0 BLOCK_SPEC: NEVER widen on failure.
+    epsilon=max(1e-4,1e-9*abs(cstar))
     secondary=np.zeros(5*n);secondary[n:3*n]=1
     aub=csr_matrix(cost.reshape(1,-1));bub=np.array([cstar+epsilon])
     start=perf_counter()
