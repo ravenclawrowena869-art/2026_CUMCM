@@ -28,7 +28,10 @@
       "replicates": 10000,
       "seed": 20260913,
       "ci": "PERCENTILE_95",
-      "block_lengths_days": [7, 14]
+      "block_lengths_days": [
+        7,
+        14
+      ]
     },
     "annual_cost_floor_formula": "max(1e-6,1e-10*abs(B1A annual cost))+max(1e-6,1e-10*abs(B1B annual cost))+clean_replay_delta_spread_if_available",
     "annual_emergency_tolerance_formula": "max(1e-6,1e-10*abs(B1A emergency kWh))+max(1e-6,1e-10*abs(B1B emergency kWh))",
