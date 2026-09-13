@@ -1,4 +1,3 @@
-
 import csv
 import json
 from hashlib import sha256
