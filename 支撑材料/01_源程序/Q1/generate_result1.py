@@ -1,13 +1,3 @@
-#!/usr/bin/env python3
-"""Generate the frozen Q1 result1.xlsx from official Attachment1 and template.
-
-Mathematical authority: CUMCM2026_C_Q1_FREEZE_R0_20260911
-Model: two-stage continuous LP, epsilon_cost=1e-4 CNY,
-eta_c=eta_d=0.9, right-endpoint canonical slots + ordinal export.
-
-This script intentionally writes into the official result1 template without
-changing worksheet names or time-label cells.
-"""
 from __future__ import annotations
 
 import argparse
@@ -28,7 +18,6 @@ E_MAX = 10800.0
 SLOT_LIMIT = 5000.0 * DT_H
 EPSILON_COST = 1e-4
 
-# Frozen current-version authority, used only as a guard against silent drift.
 FROZEN_STAGE1_COST = 35126.948589289634
 FROZEN_STAGE2_COST = 35126.948689289624
 FROZEN_CHARGE_4H = np.array([
@@ -167,7 +156,7 @@ def solve_q1(price: np.ndarray, load: np.ndarray, pv: np.ndarray):
         "discharge_4h_kWh": discharge_4h.tolist(),
     }
 
-    # Hard guards: if any of these fire, do not write a result workbook.
+    
     if np.max(np.abs(balance_residual)) > 1e-6:
         raise AssertionError("energy-balance replay failed")
     if np.max(np.abs(soc_residual)) > 1e-6:
