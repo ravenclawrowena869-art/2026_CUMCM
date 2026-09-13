@@ -234,4 +234,32 @@ Codex 完成候选模型和不同参数组合的批量计算，并自动汇总�
 
 ---
 
+# 2026-09-13 AI 交互增量
 
+本日对 Q1 图表复现、Q2 模型修正、长任务中断恢复和最终提交审计新增了较多 AI 使用。为避免把仍在运行的任务提前写成正式结论，详细原文、人工后续与当前状态统一记录在：
+
+`支撑材料/AI互动补充/11_20260913_Q2模型修正_中断恢复_提交审计.md`
+
+主要新增使用包括：
+
+1. **Q1 Figure Chain 复现**：ChatGPT 定位并重新执行已有正式绘图链，生成 PNG/PDF/SVG 供队员人工查看；该次本地 rerun 不自动替代正式 Figure Registry。
+2. **Q2 年度求解中断恢复**：Codex 年度 SP 运行因使用额度中断后，ChatGPT 设计 recovery ZIP、环境/日志/SHA256 保存方案，并要求从最后一个完整通过 certificate、实际 replay 与 day-end SOC 的日期续跑。
+3. **外部论文片段 Red-Team**：团队提供外部论文片段后，ChatGPT 协助分解成本差异，识别紧急购电和冬季 PV 预测偏差为重点诊断对象；外部总费用只作为 sanity benchmark，不作为调参目标。
+4. **Winter-PV Fast-Fix**：ChatGPT 将诊断与修正工作拆为 FYQ/Codex、XXT、CYQ 三条并行线，设计严格因果的 PV 幅值修正 challenger；正式模型是否替换仍需真实 replay 与 XXT Mathematical Review。
+5. **XXT 协议修正集成**：XXT 返回 `PROTOCOL_PASS_WITH_AMENDMENT` 后，FYQ 侧采纳严格 `< d00` 的完整历史日 cutoff、各候选独立 SOC chronology、参数预冻结等修正，不沿用原有错误边界。
+6. **风险参数反证实验解释**：团队在旧模型上发现 `q=0.95` 表现优于原 `q=0.80` 后，AI 用于解释其参数证据含义。团队明确该扫描只用于证明旧模型风险校准需要重审，不直接把 `0.95` 设为新的正式参数；后续应在修正 forecast 后重新校准并 full replay。
+7. **提交材料与 AI disclosure 审计**：ChatGPT 审计 GitHub 当前论文、源程序、结果文件、复现说明与 AI 材料，识别 Q2–Q4 正式源程序、结果文件、复现说明、最终论文 PDF 等提交级缺口，并更新 README 中的 AI 使用说明。
+
+## 本日人工裁决状态
+
+| 事项 | 人工决定 | 当前状态 |
+|---|---|---|
+| Q1 Figure Chain rerun | 用于人工查看，不自动更新正式图表状态 | `REPRODUCED / PAPER_ADOPTION_PENDING` |
+| Q2 SP 中断恢复 | 先保存证据和真实 checkpoint，再续跑 | `RECOVERY_DESIGNED / ANNUAL_RUN_NOT_YET_FINAL` |
+| 外部论文结果 | 仅作为 Red-Team / sanity benchmark | `ADOPTED_AS_RED_TEAM` |
+| Winter-PV correction | 允许作为 challenger 实验，不直接替换正式模型 | `EXPERIMENT_RUNNING` |
+| XXT A1–A4 修正 | 全部纳入 candidate 执行合同 | `PASS_WITH_AMENDMENT` |
+| q=0.95 扫描 | 作为旧参数证据的 falsification，不直接采纳 0.95 | `OLD_Q80_EVIDENCE_REOPENED / FINAL_Q_PENDING` |
+| README / submission audit | 已授权通过非 main 分支 PR 提交 | `PR_OPEN / CYQ_REVIEW_PENDING` |
+
+最终整理 `AI工具使用详情.pdf` 时，还需补齐 Winter-PV Fast-Fix 的真实执行结果、修正后风险参数重选、Q2 clean full replay、Q3/Q4 正式运行与模型检验，以及所有进入最终成果项目的 `paper_location` 和正式 `artifact`。
