@@ -14,6 +14,26 @@
 
 因此当前可以做正式 candidate execution / validation，但任何未经过 FYQ Technical Review → XXT Mathematical Review → Evidence Gate 的数字都不得作为 Frozen 或 Paper 正式事实。
 
+当前状态入口已更新为：
+
+`Q2_CURRENT_STATUS_R2.md`
+
+## 2月1日初始 SOC 统一口径
+
+Q2–Q4 primary 统一采用：
+
+`E(2025-02-01 00:00) = 6000 kWh`
+
+该值属于**模型假设**，不是题目直接给定。正式 authority：
+
+`XXT_AUTHORITY/XXT_Q234_FEB1_INITIAL_SOC_ASSUMPTION_R0.md`
+
+初始 SOC sensitivity 执行协议：
+
+`XXT_AUTHORITY/XXT_Q234_INITIAL_SOC_SENSITIVITY_PROTOCOL_R0.md`
+
+旧文件仍保留作 provenance，不静默覆盖历史版本。
+
 当前 FYQ 执行接口位于：
 
 `FYQ_CONTROLLER/`
