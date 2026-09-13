@@ -1,0 +1,26 @@
+{
+  "module": "Q3-FORMAL-R1",
+  "status": "BLOCKED_PENDING_Q3_CONTRACT_LOCKED_FOR_FYQ",
+  "formal_accounting_computed": false,
+  "formal_metrics": null,
+  "preflight_semantics_encoded": {
+    "adjustment_reference": "PREVIOUS_ACTIVE_COMMITMENT",
+    "settlement_price_semantics": "DELIVERY_SLOT_PRICE",
+    "candidate_formula": "1.5*p*delta_plus - 0.5*p*delta_minus",
+    "formal_freeze": false
+  },
+  "mandatory_sensitivities_after_lock": [
+    "FINAL_VINTAGE_VS_ORIGINAL_00",
+    "ISSUE_TIME_PRICE",
+    "PV_HOURLY_ENDPOINT_BLOCK_HOLD_V1",
+    "initial_SOC_4000_6000_8000_kWh"
+  ],
+  "mock_fixture_only": {
+    "label": "DRY_RUN_FIXTURE_ONLY / NOT_A_FORMAL_Q3_METRIC",
+    "plan_cost_units": 1440.0,
+    "adjustment_cost_units": 153.0,
+    "emergency_cost_units": 180.0,
+    "total_cost_units": 1773.0,
+    "warning": "Synthetic unit-price fixture; not yuan annual Q3 metrics."
+  }
+}
