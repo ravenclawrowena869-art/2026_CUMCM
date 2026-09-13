@@ -1,0 +1,29 @@
+{
+  "module": "Q3-FORMAL-R1",
+  "scope": "CONTRACT_INDEPENDENT_INFRASTRUCTURE_VALIDATION",
+  "formal_result_status": "BLOCKED_PENDING_Q3_CONTRACT_LOCKED_FOR_FYQ",
+  "contract_id": "XXT_Q3_MATH_CONTRACT_PREFLIGHT_R2",
+  "contract_fingerprint": "a76b2facb1032912135e2716bc95fca592c2c4eda2945adf5810b29c065b4434",
+  "contract_locked_for_fyq": false,
+  "formal_annual_metrics_generated": false,
+  "result3_generated": false,
+  "mock_fixture": {
+    "label": "DRY_RUN_FIXTURE_ONLY / NOT_A_FORMAL_Q3_RESULT",
+    "ledger_pass": true,
+    "future_leakage_count": 0,
+    "executed_slot_mutation_count": 0,
+    "delta_identity_max_abs_error": 0.0,
+    "old_active_replay_max_abs_error": 0.0,
+    "physical_pass": true,
+    "max_balance_residual_kwh": 0.0,
+    "max_soc_bound_violation_kwh": 0.0,
+    "cross_day_bridge_max_mismatch_kwh": 0.0,
+    "terminal_soc_kwh": 6000.0
+  },
+  "formal_gate": {
+    "independent_accounting_recompute": "BLOCKED_BY_UNLOCKED_CONTRACT",
+    "full_soc_replay": "NOT_RUN_FORMAL",
+    "result3_readback": "BLOCKED_BY_UNLOCKED_CONTRACT"
+  },
+  "evidence_gate": "FAIL / ADD EXPERIMENT (FORMAL CONTRACT + FORMAL RUN REQUIRED)"
+}
