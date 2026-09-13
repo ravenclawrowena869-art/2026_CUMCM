@@ -1,13 +1,27 @@
 from __future__ import annotations
 
+import json
 from pathlib import Path
 
 import pandas as pd
 import pytest
 
-from q4_2_core.contracts import ContractNotLockedError, Q4Contract, require_formal_dependencies
-from q4_2_core.io_adapters import DataContractError, adapt_q2_upstream, load_dynamic_price_attachment, normalize_dynamic_price
-from q4_2_core.validation import FutureLeakageError, audit_price_causality, validate_execution_ledger
+from q4_2_core.contracts import (
+    ContractNotLockedError,
+    Q4Contract,
+    require_formal_dependencies,
+)
+from q4_2_core.io_adapters import (
+    DataContractError,
+    adapt_q2_upstream,
+    load_dynamic_price_attachment,
+    normalize_dynamic_price,
+)
+from q4_2_core.validation import (
+    FutureLeakageError,
+    audit_price_causality,
+    validate_execution_ledger,
+)
 from q4_2_core.writer import OutputMappingError, readback_workbook, write_result_workbook
 from q4_2_core.orchestrator import run_formal_q4_2, run_preflight
 
@@ -122,3 +136,8 @@ def test_mock_contract_cannot_authorize_formal():
 
 def test_validator_requires_complete_grid():
     with pytest.raises(DataContractError,match="slot count"): validate_execution_ledger(execution_ledger().iloc[[0]].copy(),mock_contract())
+
+
+def test_direct_formal_writer_rejects_test_only_contract(tmp_path:Path):
+    with pytest.raises(OutputMappingError,match="test-only"):
+        write_result_workbook(execution_ledger(),tmp_path/"result4-2.xlsx",contract=mock_contract(locked=True,official_writer=True),lane="FORMAL_CAUSAL",formal=True)
