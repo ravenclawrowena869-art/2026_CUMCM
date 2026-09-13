@@ -2,22 +2,31 @@
   "block": "Q4-2-FORMAL-R1",
   "base_commit": "704d67f84d56428eb48892784579ecba6aaeb53b",
   "branch": "fyq/q4-2-formal-r1",
-  "remote_source_sync_commit": "f4071dc65dc8c7e393c6c1f4a90706799390d5ca",
   "execution_stage": "PRE_FORMAL_ENGINEERING_PREFLIGHT",
   "formal_result_ready": false,
   "task_zip_sha256": "63a0f701b230d37c7489ae52e7a8c5664d8fdc249c71c33edb15a1827352514a",
-  "local_test_suite": "17 passed",
-  "manifest_scope": "LOCAL_DELIVERY_SOURCE_AND_TEST_ARTIFACTS",
+  "fresh_verification": {
+    "date": "2026-09-13",
+    "test_command": "pytest -q",
+    "test_result": "13 passed in 0.45s",
+    "source": "fresh reconstruction of current branch source/tests",
+    "dry_run_status": "PASS_TEST_ONLY",
+    "future_leakage_count": 0,
+    "writer_readback_pass": true,
+    "fresh_reconstructed_test_only_binary_sha256": "5ae7ddd7be67cc8650fff7c59e262bc909844b212a68290553d4a54057960f74"
+  },
+  "manifest_scope": "PRE_FORMAL_SOURCE_TEST_AND_PROVENANCE_EVIDENCE",
   "formal_blockers": [
     "Q4_COMMON_CONTRACT_PENDING_XXT_LOCK",
     "FINAL_Q2_ARTIFACT_HASH_PENDING_CONTROLLER_APPROVAL",
     "OFFICIAL_RESULT4_2_WRITER_MAPPING_PENDING_LOCK"
   ],
-  "local_test_only_binary": {
+  "historical_local_test_only_binary": {
     "path": "支撑材料/03_中间结果/Q4/Q4_2/PREFLIGHT_R0/result4-2.TEST_ONLY_DRY_RUN.xlsx",
     "sha256": "1f836b96b74ae158f642a19bdc50c5651f347c3eae553bf3f4d6092ae055416d",
     "repository_commit": "OMITTED_BINARY_TEST_ARTIFACT",
-    "formal": false
+    "formal": false,
+    "note": "Preserved as historical pre-formal provenance; the fresh reconstructed binary hash is recorded separately above."
   },
-  "remote_sync_note": "Remote branch contains the same implementation contracts; local delivery keeps the expanded granular regression suite and SHA256SUMS used for fresh verification."
+  "formal": false
 }
